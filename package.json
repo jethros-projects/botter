@@ -1,0 +1,38 @@
+{
+  "name": "botter-cli",
+  "version": "0.7.0",
+  "type": "module",
+  "description": "A focused, scriptable CLI for Grok Bot",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": "./src/index.mjs",
+    "./core": "./src/core.mjs"
+  },
+  "bin": {
+    "botter": "./bin/botter.mjs"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "coverage:api": "node scripts/verify-api-coverage.mjs",
+    "check": "npm test && npm run coverage:api && node scripts/check-package.mjs",
+    "prepublishOnly": "npm run check"
+  },
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "src/",
+    "schema/",
+    "README.md",
+    "API-COVERAGE.md",
+    "LICENSE",
+    "routine.example.json"
+  ],
+  "keywords": [
+    "botter",
+    "grok-bot",
+    "cli",
+    "automation"
+  ]
+}

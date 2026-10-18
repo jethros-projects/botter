@@ -1,0 +1,877 @@
+{
+  "source": "Grok Bot.app/Contents/Resources/app.asar:dist/electron-main/main-app.cjs",
+  "startOffset": 973108,
+  "endOffset": 986246,
+  "methods": [
+    {
+      "name": "getAgentTranscript",
+      "offset": 973135,
+      "declaration": "getAgentTranscript:I().args(Yo)"
+    },
+    {
+      "name": "getAgentTranscriptPage",
+      "offset": 973167,
+      "declaration": "getAgentTranscriptPage:I().args(bJt)"
+    },
+    {
+      "name": "openAgentWindowed",
+      "offset": 973204,
+      "declaration": "openAgentWindowed:I().args({id:re(),limit:(0,p.rpcNumber)()})"
+    },
+    {
+      "name": "getAgentTranscriptWindow",
+      "offset": 973266,
+      "declaration": "getAgentTranscriptWindow:I().args(CJt)"
+    },
+    {
+      "name": "openAgentTail",
+      "offset": 973305,
+      "declaration": "openAgentTail:I().args({id:re(),limit:(0,p.rpcNumber)(),sessionId:(0,p.rpcOptional)((0,p.rpcString)()),unreadBoundaryAt:(0,p.rpcOptional)((0,p.rpcNumber)())})"
+    },
+    {
+      "name": "getAgentTranscriptTail",
+      "offset": 973464,
+      "declaration": "getAgentTranscriptTail:I().args(vJt)"
+    },
+    {
+      "name": "getAgentThread",
+      "offset": 973501,
+      "declaration": "getAgentThread:I().args({id:(0,p.rpcString)(),rootId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "sendPrompt",
+      "offset": 973574,
+      "declaration": "sendPrompt:I().args(TJt)"
+    },
+    {
+      "name": "promptAcceptanceStatus",
+      "offset": 973599,
+      "declaration": "promptAcceptanceStatus:I().args(EJt)"
+    },
+    {
+      "name": "respondToWidget",
+      "offset": 973636,
+      "declaration": "respondToWidget:I().args({entryId:(0,p.rpcString)(),value:(0,p.rpcString)(),agentId:re(),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "resolveAutoReviewApproval",
+      "offset": 973774,
+      "declaration": "resolveAutoReviewApproval:I().args({entryId:(0,p.rpcString)(),requestId:(0,p.rpcString)(),resolution:St(\"approval resolution\",vU),agentId:re(),approvalPlatform:(0,p.rpcOptional)(SJt),approvedCommand:(0,p.rpcOptional)((0,p.rpcString)()),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "resolveLocalToolPermission",
+      "offset": 974059,
+      "declaration": "resolveLocalToolPermission:I().args(j5)"
+    },
+    {
+      "name": "resolveConnectorGrant",
+      "offset": 974099,
+      "declaration": "resolveConnectorGrant:I().args($5)"
+    },
+    {
+      "name": "resolveVirtualCardApproval",
+      "offset": 974134,
+      "declaration": "resolveVirtualCardApproval:I().args({entryId:(0,p.rpcString)(),requestId:(0,p.rpcString)(),resolution:St(\"virtual card resolution\",[\"approved\",\"denied\",\"failed\",\"expired\"]),agentId:re(),spendRequestId:(0,p.rpcOptional)((0,p.rpcString)()),failureReason:(0,p.rpcOptional)((0,p.rpcString)()),paymentMethodId:(0,p.rpcOptional)((0,p.rpcString)()),attestation:(0,p.rpcOptional)(q5)})"
+    },
+    {
+      "name": "resolveMessagesGrants",
+      "offset": 974512,
+      "declaration": "resolveMessagesGrants:I().args({requestId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "requestMessagesGrants",
+      "offset": 974574,
+      "declaration": "requestMessagesGrants:I().args({requestId:(0,p.rpcString)(),grants:(0,p.rpcArray)(St(\"messages grant\",lLe))})"
+    },
+    {
+      "name": "awaitMessagesGrants",
+      "offset": 974684,
+      "declaration": "awaitMessagesGrants:I().args({requestId:(0,p.rpcString)(),waitMs:(0,p.rpcNumber)()})"
+    },
+    {
+      "name": "cancelMessagesGrants",
+      "offset": 974769,
+      "declaration": "cancelMessagesGrants:I().args({requestId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "requestCookieOriginApproval",
+      "offset": 974830,
+      "declaration": "requestCookieOriginApproval:I().args({requestId:(0,p.rpcString)(),origins:(0,p.rpcArray)(yZt),agentId:(0,p.rpcOptional)(re())})"
+    },
+    {
+      "name": "awaitCookieOriginApproval",
+      "offset": 974958,
+      "declaration": "awaitCookieOriginApproval:I().args({requestId:(0,p.rpcString)(),waitMs:(0,p.rpcNumber)()})"
+    },
+    {
+      "name": "cancelCookieOriginApproval",
+      "offset": 975049,
+      "declaration": "cancelCookieOriginApproval:I().args({requestId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "requestWebAuthnCeremony",
+      "offset": 975116,
+      "declaration": "requestWebAuthnCeremony:I().args(RJt)"
+    },
+    {
+      "name": "dismissWidget",
+      "offset": 975154,
+      "declaration": "dismissWidget:I().args({entryId:(0,p.rpcString)(),agentId:re(),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "submitSecret",
+      "offset": 975266,
+      "declaration": "submitSecret:I().args({entryId:(0,p.rpcString)(),value:(0,p.rpcString)(),agentId:re(),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "storeSecret",
+      "offset": 975401,
+      "declaration": "storeSecret:I().args({target:(0,p.rpcUnion)((0,p.rpcObject)({kind:(0,p.rpcLiteral)(\"box-env\"),name:(0,p.rpcString)()}),(0,p.rpcObject)({kind:(0,p.rpcLiteral)(\"channel-credential\"),platform:(0,p.rpcString)(),field:(0,p.rpcString)()})),value:(0,p.rpcString)(),agentId:re()})"
+    },
+    {
+      "name": "submitUserForm",
+      "offset": 975674,
+      "declaration": "submitUserForm:I().args({entryId:(0,p.rpcString)(),values:BF,agentId:re(),platform:(0,p.rpcOptional)(QFe),saveToVault:(0,p.rpcOptional)((0,p.rpcBoolean)()),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "dismissUserForm",
+      "offset": 975879,
+      "declaration": "dismissUserForm:I().args({entryId:(0,p.rpcString)(),mode:St(\"dismissal mode\",[\"dismissed\",\"escalated\"]),agentId:re(),platform:(0,p.rpcOptional)(QFe),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "sendDraft",
+      "offset": 976077,
+      "declaration": "sendDraft:I().args({entryId:(0,p.rpcString)(),draft:_Jt,agentId:re(),sessionId:(0,p.rpcOptional)((0,p.rpcString)()),shownSignatureHtml:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "discardDraft",
+      "offset": 976251,
+      "declaration": "discardDraft:I().args({entryId:(0,p.rpcString)(),agentId:re(),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "reactToMessage",
+      "offset": 976362,
+      "declaration": "reactToMessage:I().args({entryId:(0,p.rpcString)(),emoji:(0,p.rpcString)(),agentId:re(),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "voteFeedback",
+      "offset": 976499,
+      "declaration": "voteFeedback:I().args({agentId:re(),entryId:(0,p.rpcString)(),action:St(\"feedback action\",IU),categories:(0,p.rpcOptional)((0,p.rpcArray)((0,p.rpcString)())),comment:(0,p.rpcOptional)((0,p.rpcString)()),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "publishBotTemplate",
+      "offset": 976751,
+      "declaration": "publishBotTemplate:I().args(L5)"
+    },
+    {
+      "name": "listBotTemplates",
+      "offset": 976783,
+      "declaration": "listBotTemplates:I().noArgs"
+    },
+    {
+      "name": "getBotTemplateVersion",
+      "offset": 976811,
+      "declaration": "getBotTemplateVersion:I().args(U5)"
+    },
+    {
+      "name": "getBotTemplateForSourceAgent",
+      "offset": 976846,
+      "declaration": "getBotTemplateForSourceAgent:I().args(F5)"
+    },
+    {
+      "name": "getBotTemplateExportPolicy",
+      "offset": 976888,
+      "declaration": "getBotTemplateExportPolicy:I().noArgs"
+    },
+    {
+      "name": "deleteBotTemplate",
+      "offset": 976926,
+      "declaration": "deleteBotTemplate:I().args(Q5)"
+    },
+    {
+      "name": "setBotTemplateVisibility",
+      "offset": 976957,
+      "declaration": "setBotTemplateVisibility:I().args(G5)"
+    },
+    {
+      "name": "listAgents",
+      "offset": 976995,
+      "declaration": "listAgents:I().noArgs"
+    },
+    {
+      "name": "countAgents",
+      "offset": 977017,
+      "declaration": "countAgents:I().noArgs"
+    },
+    {
+      "name": "searchAgents",
+      "offset": 977040,
+      "declaration": "searchAgents:I().args({query:(0,p.rpcString)(),limit:(0,p.rpcOptional)((0,p.rpcNumber)())})"
+    },
+    {
+      "name": "searchMedia",
+      "offset": 977132,
+      "declaration": "searchMedia:I().args({query:(0,p.rpcString)(),limit:(0,p.rpcOptional)((0,p.rpcNumber)())})"
+    },
+    {
+      "name": "openAgent",
+      "offset": 977223,
+      "declaration": "openAgent:I().args(Yo)"
+    },
+    {
+      "name": "createAgent",
+      "offset": 977246,
+      "declaration": "createAgent:I().args(V5)"
+    },
+    {
+      "name": "createAgentFromTemplate",
+      "offset": 977271,
+      "declaration": "createAgentFromTemplate:I().args(H5)"
+    },
+    {
+      "name": "createGroup",
+      "offset": 977308,
+      "declaration": "createGroup:I().args({name:(0,p.rpcString)(),description:(0,p.rpcOptional)((0,p.rpcString)()),memberAgentIds:(0,p.rpcArray)(re()),humanMemberUserIds:(0,p.rpcOptional)((0,p.rpcArray)((0,p.rpcNumber)())),namedBy:(0,p.rpcOptional)(St(\"name provenance\",O0e)),creationRoute:(0,p.rpcOptional)((0,p.rpcUnion)((0,p.rpcObject)({kind:(0,p.rpcLiteral)(\"box\")}),(0,p.rpcObject)({kind:(0,p.rpcLiteral)(\"temporal\"),scope:(0,p.rpcString)()}))),clientNonce:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "setGroupMembers",
+      "offset": 977788,
+      "declaration": "setGroupMembers:I().args({id:re(),memberAgentIds:(0,p.rpcArray)(re()),requesterAgentId:(0,p.rpcOptional)(re())})"
+    },
+    {
+      "name": "updateAgent",
+      "offset": 977901,
+      "declaration": "updateAgent:I().args({id:re(),profile:OJt})"
+    },
+    {
+      "name": "seedConversationName",
+      "offset": 977945,
+      "declaration": "seedConversationName:I().args({id:re(),prompt:(0,p.rpcString)()})"
+    },
+    {
+      "name": "deleteAgents",
+      "offset": 978011,
+      "declaration": "deleteAgents:I().args({ids:(0,p.rpcArray)(re())})"
+    },
+    {
+      "name": "duplicateAgent",
+      "offset": 978061,
+      "declaration": "duplicateAgent:I().args(Yo)"
+    },
+    {
+      "name": "kickstartAgent",
+      "offset": 978089,
+      "declaration": "kickstartAgent:I().args(Yo)"
+    },
+    {
+      "name": "interruptAgentRun",
+      "offset": 978117,
+      "declaration": "interruptAgentRun:I().args({id:re(),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "startFreshConversation",
+      "offset": 978202,
+      "declaration": "startFreshConversation:I().args({id:re(),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "rollBackConversation",
+      "offset": 978292,
+      "declaration": "rollBackConversation:I().args({id:re(),sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "requestDiskSaverAudit",
+      "offset": 978380,
+      "declaration": "requestDiskSaverAudit:I().args(Yo)"
+    },
+    {
+      "name": "getCloudAgentInfo",
+      "offset": 978415,
+      "declaration": "getCloudAgentInfo:I().args({bcId:(0,p.rpcString)(),includeFiles:(0,p.rpcOptional)((0,p.rpcBoolean)()),includeArtifacts:(0,p.rpcOptional)((0,p.rpcBoolean)())})"
+    },
+    {
+      "name": "getCloudAgentConversation",
+      "offset": 978574,
+      "declaration": "getCloudAgentConversation:I().args({bcId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "ensureCloudAgentArtifacts",
+      "offset": 978635,
+      "declaration": "ensureCloudAgentArtifacts:I().args({agentId:re(),bcId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "stopCloudAgent",
+      "offset": 978709,
+      "declaration": "stopCloudAgent:I().args({bcId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "getCloudAgentPublishProposals",
+      "offset": 978759,
+      "declaration": "getCloudAgentPublishProposals:I().args({bcId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "listCloudAgentPublishedApps",
+      "offset": 978824,
+      "declaration": "listCloudAgentPublishedApps:I().noArgs"
+    },
+    {
+      "name": "confirmCloudAgentPublishProposal",
+      "offset": 978863,
+      "declaration": "confirmCloudAgentPublishProposal:I().args({agentId:re(),bcId:(0,p.rpcString)(),proposalId:(0,p.rpcString)(),slug:(0,p.rpcString)(),visibility:(0,p.rpcOptional)(GFe),requireConfirmationForUpdates:(0,p.rpcOptional)((0,p.rpcBoolean)())})"
+    },
+    {
+      "name": "dismissCloudAgentPublishProposal",
+      "offset": 979098,
+      "declaration": "dismissCloudAgentPublishProposal:I().args({agentId:re(),bcId:(0,p.rpcString)(),proposalId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "updateCloudAgentPublishApp",
+      "offset": 979208,
+      "declaration": "updateCloudAgentPublishApp:I().args({bcId:(0,p.rpcString)(),slug:(0,p.rpcString)(),apex:(0,p.rpcString)(),visibility:(0,p.rpcOptional)(GFe),muteRedeployPrompts:(0,p.rpcOptional)((0,p.rpcBoolean)()),requireConfirmationForUpdates:(0,p.rpcOptional)((0,p.rpcBoolean)())})"
+    },
+    {
+      "name": "getCloudAgentAppSecrets",
+      "offset": 979476,
+      "declaration": "getCloudAgentAppSecrets:I().args({bcId:(0,p.rpcString)(),projectDir:(0,p.rpcString)()})"
+    },
+    {
+      "name": "setCloudAgentAppSecrets",
+      "offset": 979564,
+      "declaration": "setCloudAgentAppSecrets:I().args({bcId:(0,p.rpcString)(),projectDir:(0,p.rpcString)(),secrets:(0,p.rpcArray)((0,p.rpcObject)({name:(0,p.rpcString)(),value:(0,p.rpcString)()}))})"
+    },
+    {
+      "name": "tellCloudAgentAppSecretsSet",
+      "offset": 979742,
+      "declaration": "tellCloudAgentAppSecretsSet:I().args({bcId:(0,p.rpcString)(),projectDir:(0,p.rpcString)(),names:(0,p.rpcArray)((0,p.rpcString)()),refused:(0,p.rpcArray)(MJt),applyNeeded:(0,p.rpcBoolean)()})"
+    },
+    {
+      "name": "unpublishCloudAgentPublishApp",
+      "offset": 979933,
+      "declaration": "unpublishCloudAgentPublishApp:I().args({bcId:(0,p.rpcString)(),slug:(0,p.rpcString)(),apex:(0,p.rpcString)()})"
+    },
+    {
+      "name": "getListenerIntegrations",
+      "offset": 980044,
+      "declaration": "getListenerIntegrations:I().noArgs"
+    },
+    {
+      "name": "getListenerConnectUrl",
+      "offset": 980079,
+      "declaration": "getListenerConnectUrl:I().args({platform:(0,p.rpcString)(),forceOauth:(0,p.rpcOptional)((0,p.rpcBoolean)()),oauthRedirectUri:XFe})"
+    },
+    {
+      "name": "disconnectListenerPlatform",
+      "offset": 980210,
+      "declaration": "disconnectListenerPlatform:I().args({platform:(0,p.rpcString)()})"
+    },
+    {
+      "name": "completeGithubConnect",
+      "offset": 980276,
+      "declaration": "completeGithubConnect:I().args({state:(0,p.rpcString)(),code:(0,p.rpcOptional)((0,p.rpcString)()),installationId:(0,p.rpcOptional)((0,p.rpcString)()),setupAction:(0,p.rpcOptional)((0,p.rpcString)()),error:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "setAgentUnread",
+      "offset": 980520,
+      "declaration": "setAgentUnread:I().args({id:re(),isUnread:(0,p.rpcBoolean)(),atMs:(0,p.rpcOptional)((0,p.rpcNumber)())})"
+    },
+    {
+      "name": "clearGeneratedRoomNameStamps",
+      "offset": 980625,
+      "declaration": "clearGeneratedRoomNameStamps:I().args({rooms:(0,p.rpcArray)((0,p.rpcObject)({id:(0,p.rpcString)(),generatedName:(0,p.rpcString)()}))})"
+    },
+    {
+      "name": "setAgentHiddenFromSidebar",
+      "offset": 980760,
+      "declaration": "setAgentHiddenFromSidebar:I().args({id:re(),isHidden:(0,p.rpcBoolean)()})"
+    },
+    {
+      "name": "setAgentNotifyOnUpdates",
+      "offset": 980834,
+      "declaration": "setAgentNotifyOnUpdates:I().args({id:re(),isEnabled:(0,p.rpcBoolean)()})"
+    },
+    {
+      "name": "setAgentDraftingDisabled",
+      "offset": 980907,
+      "declaration": "setAgentDraftingDisabled:I().args({id:re(),isDisabled:(0,p.rpcBoolean)()})"
+    },
+    {
+      "name": "setAgentVoice",
+      "offset": 980982,
+      "declaration": "setAgentVoice:I().args({id:re(),voiceId:(0,p.rpcOptional)((0,p.rpcNullable)((0,p.rpcString)())),voiceSpeed:(0,p.rpcOptional)((0,p.rpcNumber)()),voiceLanguage:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "previewVoice",
+      "offset": 981179,
+      "declaration": "previewVoice:I().args({voiceId:(0,p.rpcString)(),greetingId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "setAgentAvatarBytes",
+      "offset": 981259,
+      "declaration": "setAgentAvatarBytes:I().args({id:re(),pngBase64:(0,p.rpcNullable)((0,p.rpcString)())})"
+    },
+    {
+      "name": "getAgentAvatar",
+      "offset": 981346,
+      "declaration": "getAgentAvatar:I().args(Yo)"
+    },
+    {
+      "name": "getAgentNotificationAvatar",
+      "offset": 981374,
+      "declaration": "getAgentNotificationAvatar:I().args(Yo)"
+    },
+    {
+      "name": "getAgentTodos",
+      "offset": 981414,
+      "declaration": "getAgentTodos:I().args(Yo)"
+    },
+    {
+      "name": "getAgentWorkflows",
+      "offset": 981441,
+      "declaration": "getAgentWorkflows:I().args(Yo)"
+    },
+    {
+      "name": "createAgentWorkflow",
+      "offset": 981472,
+      "declaration": "createAgentWorkflow:I().args({id:re(),spec:HFe})"
+    },
+    {
+      "name": "updateAgentWorkflow",
+      "offset": 981521,
+      "declaration": "updateAgentWorkflow:I().args({...P5,spec:HFe})"
+    },
+    {
+      "name": "deleteAgentWorkflow",
+      "offset": 981568,
+      "declaration": "deleteAgentWorkflow:I().args(P5)"
+    },
+    {
+      "name": "runAgentWorkflowNow",
+      "offset": 981601,
+      "declaration": "runAgentWorkflowNow:I().args(P5)"
+    },
+    {
+      "name": "importAgentWorkflowText",
+      "offset": 981634,
+      "declaration": "importAgentWorkflowText:I().args({id:re(),markdown:(0,p.rpcString)(),name:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "importAgentWorkflowUrl",
+      "offset": 981747,
+      "declaration": "importAgentWorkflowUrl:I().args({id:re(),url:(0,p.rpcString)(),name:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "getConversationOutline",
+      "offset": 981854,
+      "declaration": "getConversationOutline:I().args({id:(0,p.rpcString)()})"
+    },
+    {
+      "name": "readMainAgentContext",
+      "offset": 981910,
+      "declaration": "readMainAgentContext:I().args(Yo)"
+    },
+    {
+      "name": "readVoiceCallSentMessages",
+      "offset": 981944,
+      "declaration": "readVoiceCallSentMessages:I().args(Yo)"
+    },
+    {
+      "name": "nudgeVoiceCall",
+      "offset": 981983,
+      "declaration": "nudgeVoiceCall:I().args({id:re(),callId:(0,p.rpcString)(),request:(0,p.rpcString)(),spokenTurns:(0,p.rpcArray)((0,p.rpcString)())})"
+    },
+    {
+      "name": "recordVoiceCall",
+      "offset": 982115,
+      "declaration": "recordVoiceCall:I().args({record:XJt})"
+    },
+    {
+      "name": "setVoiceCallPresence",
+      "offset": 982154,
+      "declaration": "setVoiceCallPresence:I().args({id:re(),callId:(0,p.rpcString)(),isOnTheLine:(0,p.rpcBoolean)(),acceptsOverheard:(0,p.rpcOptional)((0,p.rpcBoolean)())})"
+    },
+    {
+      "name": "getVoiceCall",
+      "offset": 982306,
+      "declaration": "getVoiceCall:I().args({id:re(),callId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "skillsCatalog",
+      "offset": 982364,
+      "declaration": "skillsCatalog:I().noArgs"
+    },
+    {
+      "name": "syncPluginSkills",
+      "offset": 982389,
+      "declaration": "syncPluginSkills:I().noArgs"
+    },
+    {
+      "name": "getPluginSyncStatus",
+      "offset": 982417,
+      "declaration": "getPluginSyncStatus:I().noArgs"
+    },
+    {
+      "name": "getMcpState",
+      "offset": 982448,
+      "declaration": "getMcpState:I().noArgs"
+    },
+    {
+      "name": "getMcpCatalog",
+      "offset": 982471,
+      "declaration": "getMcpCatalog:I().noArgs"
+    },
+    {
+      "name": "getEffectiveMcpPlugins",
+      "offset": 982496,
+      "declaration": "getEffectiveMcpPlugins:I().noArgs"
+    },
+    {
+      "name": "getMcpPluginLogo",
+      "offset": 982530,
+      "declaration": "getMcpPluginLogo:I().args({url:(0,p.rpcString)()})"
+    },
+    {
+      "name": "installMcpEntry",
+      "offset": 982581,
+      "declaration": "installMcpEntry:I().args(CZt)"
+    },
+    {
+      "name": "updateMcpPluginInstall",
+      "offset": 982611,
+      "declaration": "updateMcpPluginInstall:I().args(vZt)"
+    },
+    {
+      "name": "removeMcpServer",
+      "offset": 982648,
+      "declaration": "removeMcpServer:I().args($Fe)"
+    },
+    {
+      "name": "uninstallMcpPlugin",
+      "offset": 982678,
+      "declaration": "uninstallMcpPlugin:I().args({pluginId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "authenticateMcpServer",
+      "offset": 982736,
+      "declaration": "authenticateMcpServer:I().args(W5)"
+    },
+    {
+      "name": "renameMcpAccount",
+      "offset": 982771,
+      "declaration": "renameMcpAccount:I().args(bZt)"
+    },
+    {
+      "name": "removeMcpAccount",
+      "offset": 982802,
+      "declaration": "removeMcpAccount:I().args(EZt)"
+    },
+    {
+      "name": "setMcpCustomInstructions",
+      "offset": 982833,
+      "declaration": "setMcpCustomInstructions:I().args(IZt)"
+    },
+    {
+      "name": "listMcpServerTools",
+      "offset": 982872,
+      "declaration": "listMcpServerTools:I().args($Fe)"
+    },
+    {
+      "name": "toggleMcpToolDisabled",
+      "offset": 982905,
+      "declaration": "toggleMcpToolDisabled:I().args(kZt)"
+    },
+    {
+      "name": "readMcpAppResource",
+      "offset": 982941,
+      "declaration": "readMcpAppResource:I().args(z5)"
+    },
+    {
+      "name": "callMcpAppTool",
+      "offset": 982973,
+      "declaration": "callMcpAppTool:I().args({serverIdentifier:(0,p.rpcString)(),toolName:(0,p.rpcString)(),argumentsJson:(0,p.rpcString)(),userActivated:(0,p.rpcBoolean)(),agentId:(0,p.rpcOptional)(re())})"
+    },
+    {
+      "name": "transcribeAudio",
+      "offset": 983159,
+      "declaration": "transcribeAudio:I().args(RZt)"
+    },
+    {
+      "name": "generateAgentAvatarImage",
+      "offset": 983189,
+      "declaration": "generateAgentAvatarImage:I().args({description:(0,p.rpcString)()})"
+    },
+    {
+      "name": "getSkillPublishTargets",
+      "offset": 983256,
+      "declaration": "getSkillPublishTargets:I().noArgs"
+    },
+    {
+      "name": "publishSkill",
+      "offset": 983290,
+      "declaration": "publishSkill:I().args({workflowId:(0,p.rpcString)(),teamId:(0,p.rpcNumber)()})"
+    },
+    {
+      "name": "resyncPublishedSkill",
+      "offset": 983369,
+      "declaration": "resyncPublishedSkill:I().args({workflowId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "unpublishSkill",
+      "offset": 983431,
+      "declaration": "unpublishSkill:I().args({workflowId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "unpublishPluginListing",
+      "offset": 983487,
+      "declaration": "unpublishPluginListing:I().args({pluginId:(0,p.rpcString)(),teamId:(0,p.rpcNumber)()})"
+    },
+    {
+      "name": "hasRestorablePluginListingCopy",
+      "offset": 983574,
+      "declaration": "hasRestorablePluginListingCopy:I().args({pluginId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "getSubagents",
+      "offset": 983644,
+      "declaration": "getSubagents:I().args(Yo)"
+    },
+    {
+      "name": "getAsyncTasks",
+      "offset": 983670,
+      "declaration": "getAsyncTasks:I().args(Yo)"
+    },
+    {
+      "name": "getTrays",
+      "offset": 983697,
+      "declaration": "getTrays:I().noArgs"
+    },
+    {
+      "name": "dismissTray",
+      "offset": 983717,
+      "declaration": "dismissTray:I().args({id:(0,p.rpcString)()})"
+    },
+    {
+      "name": "clearTrays",
+      "offset": 983762,
+      "declaration": "clearTrays:I().noArgs"
+    },
+    {
+      "name": "getAgentChannels",
+      "offset": 983784,
+      "declaration": "getAgentChannels:I().args(Yo)"
+    },
+    {
+      "name": "connectChannel",
+      "offset": 983814,
+      "declaration": "connectChannel:I().args({...O5,token:(0,p.rpcString)()})"
+    },
+    {
+      "name": "disconnectChannel",
+      "offset": 983871,
+      "declaration": "disconnectChannel:I().args(O5)"
+    },
+    {
+      "name": "refreshChannel",
+      "offset": 983902,
+      "declaration": "refreshChannel:I().args(O5)"
+    },
+    {
+      "name": "getBoxSecretsStatus",
+      "offset": 983930,
+      "declaration": "getBoxSecretsStatus:I().noArgs"
+    },
+    {
+      "name": "getAgentAutomations",
+      "offset": 983961,
+      "declaration": "getAgentAutomations:I().args(Yo)"
+    },
+    {
+      "name": "getAgentTasks",
+      "offset": 983994,
+      "declaration": "getAgentTasks:I().args({agentId:re()})"
+    },
+    {
+      "name": "markAgentTaskDone",
+      "offset": 984033,
+      "declaration": "markAgentTaskDone:I().args({agentId:re(),taskId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "markAgentTaskRead",
+      "offset": 984101,
+      "declaration": "markAgentTaskRead:I().args({agentId:re(),taskId:(0,p.rpcString)(),entryId:(0,p.rpcString)()})"
+    },
+    {
+      "name": "setAgentTaskPinned",
+      "offset": 984195,
+      "declaration": "setAgentTaskPinned:I().args({agentId:re(),taskId:(0,p.rpcString)(),isPinned:(0,p.rpcBoolean)()})"
+    },
+    {
+      "name": "getAutomationWebhookCredential",
+      "offset": 984292,
+      "declaration": "getAutomationWebhookCredential:I().args(ZI)"
+    },
+    {
+      "name": "listAllAutomations",
+      "offset": 984336,
+      "declaration": "listAllAutomations:I().noArgs"
+    },
+    {
+      "name": "isGlobalSearchEnabled",
+      "offset": 984366,
+      "declaration": "isGlobalSearchEnabled:I().noArgs"
+    },
+    {
+      "name": "isEgressTunnelAvailable",
+      "offset": 984399,
+      "declaration": "isEgressTunnelAvailable:I().noArgs"
+    },
+    {
+      "name": "setAgentAutomationEnabled",
+      "offset": 984434,
+      "declaration": "setAgentAutomationEnabled:I().args({...ZI,isEnabled:(0,p.rpcBoolean)()})"
+    },
+    {
+      "name": "createAgentAutomation",
+      "offset": 984507,
+      "declaration": "createAgentAutomation:I().args({id:re(),spec:jFe})"
+    },
+    {
+      "name": "updateAgentAutomation",
+      "offset": 984558,
+      "declaration": "updateAgentAutomation:I().args({...ZI,spec:jFe})"
+    },
+    {
+      "name": "deleteAgentAutomation",
+      "offset": 984607,
+      "declaration": "deleteAgentAutomation:I().args(ZI)"
+    },
+    {
+      "name": "runAgentAutomationNow",
+      "offset": 984642,
+      "declaration": "runAgentAutomationNow:I().args({...ZI,sessionId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "getForeverBoxStatus",
+      "offset": 984729,
+      "declaration": "getForeverBoxStatus:I().args(M5)"
+    },
+    {
+      "name": "ensureForeverBox",
+      "offset": 984762,
+      "declaration": "ensureForeverBox:I().args(M5)"
+    },
+    {
+      "name": "handBackForeverBox",
+      "offset": 984792,
+      "declaration": "handBackForeverBox:I().args({id:(0,p.rpcString)(),trigger:(0,p.rpcOptional)(gZt),requestId:(0,p.rpcOptional)((0,p.rpcString)())})"
+    },
+    {
+      "name": "startTeachRecording",
+      "offset": 984922,
+      "declaration": "startTeachRecording:I().args({agentId:re(),entryPoint:hZt})"
+    },
+    {
+      "name": "stopTeachRecording",
+      "offset": 984982,
+      "declaration": "stopTeachRecording:I().args({agentId:re(),save:(0,p.rpcBoolean)()})"
+    },
+    {
+      "name": "getTeachRecordingStatus",
+      "offset": 985050,
+      "declaration": "getTeachRecordingStatus:I().noArgs"
+    },
+    {
+      "name": "uploadAttachment",
+      "offset": 985085,
+      "declaration": "uploadAttachment:I().args(BJt)"
+    },
+    {
+      "name": "uploadAttachmentChunk",
+      "offset": 985116,
+      "declaration": "uploadAttachmentChunk:I().args(DJt)"
+    },
+    {
+      "name": "readAttachmentImage",
+      "offset": 985152,
+      "declaration": "readAttachmentImage:I().args({path:(0,p.rpcString)(),rendition:(0,p.rpcOptional)((0,p.rpcUnion)((0,p.rpcLiteral)(\"preview\"),(0,p.rpcLiteral)(\"original\"))),tile:(0,p.rpcOptional)(nt(\"tile rendition\",QU)),fit:(0,p.rpcOptional)(nt(\"fit rendition\",GU))})"
+    },
+    {
+      "name": "readAttachmentText",
+      "offset": 985403,
+      "declaration": "readAttachmentText:I().args(NJt)"
+    },
+    {
+      "name": "readAttachmentChunk",
+      "offset": 985436,
+      "declaration": "readAttachmentChunk:I().args(LJt)"
+    },
+    {
+      "name": "getHostSettings",
+      "offset": 985470,
+      "declaration": "getHostSettings:I().noArgs"
+    },
+    {
+      "name": "setHostSettings",
+      "offset": 985497,
+      "declaration": "setHostSettings:I().args(jJt)"
+    },
+    {
+      "name": "setBoxSecrets",
+      "offset": 985527,
+      "declaration": "setBoxSecrets:I().args({secrets:BF})"
+    },
+    {
+      "name": "carryBoxSecretsToBot",
+      "offset": 985564,
+      "declaration": "carryBoxSecretsToBot:I().args({serverId:(0,p.rpcString)(),names:(0,p.rpcArray)((0,p.rpcString)())})"
+    },
+    {
+      "name": "injectChromeCookies",
+      "offset": 985664,
+      "declaration": "injectChromeCookies:I().args({cookies:(0,p.rpcArray)(SZt)})"
+    },
+    {
+      "name": "refreshMcp",
+      "offset": 985724,
+      "declaration": "refreshMcp:I().args({completion:(0,p.rpcOptional)(_Zt)})"
+    },
+    {
+      "name": "listBoxMcpServers",
+      "offset": 985781,
+      "declaration": "listBoxMcpServers:I().args({serverIdentifiers:(0,p.rpcArray)((0,p.rpcString)())})"
+    },
+    {
+      "name": "completeMcpOAuth",
+      "offset": 985863,
+      "declaration": "completeMcpOAuth:I().args({code:(0,p.rpcString)(),state:(0,p.rpcString)()})"
+    },
+    {
+      "name": "updateForeverBox",
+      "offset": 985939,
+      "declaration": "updateForeverBox:I().args(M5)"
+    },
+    {
+      "name": "setWindowFocused",
+      "offset": 985969,
+      "declaration": "setWindowFocused:I().args({isFocused:(0,p.rpcBoolean)(),surface:(0,p.rpcOptional)(nt(\"client surface\",C3))})"
+    },
+    {
+      "name": "getHostStatus",
+      "offset": 986078,
+      "declaration": "getHostStatus:I().args($Jt)"
+    },
+    {
+      "name": "updateHostNow",
+      "offset": 986106,
+      "declaration": "updateHostNow:I().args({force:(0,p.rpcOptional)((0,p.rpcBoolean)()),includeErrorDetail:(0,p.rpcOptional)((0,p.rpcBoolean)())})"
+    }
+  ],
+  "provenance": {
+    "observedAt": "2026-10-17T23:03:19.291Z",
+    "source": "Installed Grok Bot desktop application; bundled protobuf descriptors extracted without live API mutation.",
+    "appVersion": "0.71.2",
+    "asarSha256": "055b087a9bacc3be4e5f80c468edf2fd031dd5b928ab2e7da7e01dd10de0e860",
+    "protoSha256": "7727f3027a1bc01890cd07ed2aa4bba0f7b77a9962db110ce94056841bd2f168",
+    "bundledFile": "dist/electron-main/main-app.cjs",
+    "limitation": "Client-declared methods and schemas do not prove server availability, permissions, or entitlement.",
+    "transport": "Client constructs POST {baseUrl}/api/{method}; server implementation is not included in the application."
+  }
+}

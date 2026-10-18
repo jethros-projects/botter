@@ -1,0 +1,12 @@
+node_modules/
+work/
+coverage/
+*.tgz
+.env
+.env.*
+!.env.example
+.DS_Store
+verification*.json
+auth.json
+*.credentials.json
+webhook-key*.json

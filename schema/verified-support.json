@@ -1,0 +1,2442 @@
+{
+  "version": 1,
+  "verifiedAt": "2026-10-17T23:38:27.654656+00:00",
+  "proposalOnly": false,
+  "scopePolicy": "Only listed exact paths are proposed callable. Successful payloads establish method/transport behavior, not every field/value or downstream external-tool semantics.",
+  "backend": [
+    {
+      "id": "aiserver.v1.AiService/AvailableModels",
+      "name": "AvailableModels",
+      "evidence": "historical-audit/3",
+      "evidenceRefs": [
+        "historical-audit/3"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "AiService",
+      "method": "AvailableModels"
+    },
+    {
+      "id": "aiserver.v1.AiService/StreamStt",
+      "name": "StreamStt",
+      "evidence": "historical-audit/StreamStt",
+      "evidenceRefs": [
+        "historical-audit/StreamStt"
+      ],
+      "scope": "Synthetic short English audio roundtrip; exact expected phrase and final streaming transcript.",
+      "restrictions": [
+        "No microphone/user audio used; languages/voices/formats outside recorded request not claimed."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "AiService",
+      "method": "StreamStt"
+    },
+    {
+      "id": "aiserver.v1.AiService/TextToSpeech",
+      "name": "TextToSpeech",
+      "evidence": "historical-audit/TextToSpeech",
+      "evidenceRefs": [
+        "historical-audit/TextToSpeech"
+      ],
+      "scope": "Synthetic English speech returned MP3 and transcribed back to exact input phrase.",
+      "restrictions": [
+        "No microphone/user audio used; languages/voices/formats outside recorded request not claimed."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "AiService",
+      "method": "TextToSpeech"
+    },
+    {
+      "id": "aiserver.v1.AiService/TranscribeAudio",
+      "name": "TranscribeAudio",
+      "evidence": "historical-audit/TranscribeAudio",
+      "evidenceRefs": [
+        "historical-audit/TranscribeAudio"
+      ],
+      "scope": "Synthetic short English audio roundtrip; exact expected phrase and final streaming transcript.",
+      "restrictions": [
+        "No microphone/user audio used; languages/voices/formats outside recorded request not claimed."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "AiService",
+      "method": "TranscribeAudio"
+    },
+    {
+      "id": "aiserver.v1.BackgroundComposerService/GetBackgroundComposerUserSettings",
+      "name": "GetBackgroundComposerUserSettings",
+      "evidence": "historical-audit/5",
+      "evidenceRefs": [
+        "historical-audit/5"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "BackgroundComposerService",
+      "method": "GetBackgroundComposerUserSettings"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/CreateAutomationWebhookApiKey",
+      "name": "CreateAutomationWebhookApiKey",
+      "evidence": "historical-audit/10",
+      "evidenceRefs": [
+        "historical-audit/10"
+      ],
+      "scope": "Provision key for owned routine, mode0600 file, then authenticated webhook execution.",
+      "restrictions": [
+        "Do not print key; fixture credential file removed."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "CreateAutomationWebhookApiKey"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/ExecuteSandMcpTool",
+      "name": "ExecuteSandMcpTool",
+      "evidence": "historical-audit/tools.json#1",
+      "evidenceRefs": [
+        "historical-audit/tools.json#1"
+      ],
+      "scope": "Actual CLI tool-call cursor-github cursor-github-get_me --args {}; result.success returned user profile.",
+      "restrictions": [
+        "Generic connected-tool dispatch is verified; downstream tool semantics/permissions are separate.",
+        "MCP config/plugin-scope/correlation overrides not exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "ExecuteSandMcpTool",
+      "allowedRequestFields": [
+        "serverIdentifier",
+        "toolName",
+        "args",
+        "toolCallId",
+        "agentId"
+      ]
+    },
+    {
+      "id": "aiserver.v1.DashboardService/GetCurrentPeriodUsage",
+      "name": "GetCurrentPeriodUsage",
+      "evidence": "historical-audit/17",
+      "evidenceRefs": [
+        "historical-audit/17"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "GetCurrentPeriodUsage"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/GetEffectiveUserPlugins",
+      "name": "GetEffectiveUserPlugins",
+      "evidence": "historical-audit/19",
+      "evidenceRefs": [
+        "historical-audit/19"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "GetEffectiveUserPlugins"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/GetHardLimit",
+      "name": "GetHardLimit",
+      "evidence": "historical-audit/21",
+      "evidenceRefs": [
+        "historical-audit/21"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "GetHardLimit"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/GetManagedSkills",
+      "name": "GetManagedSkills",
+      "evidence": "historical-audit/22",
+      "evidenceRefs": [
+        "historical-audit/22"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "GetManagedSkills"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/GetMe",
+      "name": "GetMe",
+      "evidence": "historical-audit/23",
+      "evidenceRefs": [
+        "historical-audit/23"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "GetMe"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/GetMonthlyBillingCycle",
+      "name": "GetMonthlyBillingCycle",
+      "evidence": "historical-audit/24",
+      "evidenceRefs": [
+        "historical-audit/24"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "GetMonthlyBillingCycle"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/GetSandAccessStatus",
+      "name": "GetSandAccessStatus",
+      "evidence": "historical-audit/25",
+      "evidenceRefs": [
+        "historical-audit/25"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "GetSandAccessStatus"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/GetSandTrialClaimStatus",
+      "name": "GetSandTrialClaimStatus",
+      "evidence": "historical-audit/27",
+      "evidenceRefs": [
+        "historical-audit/27"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "GetSandTrialClaimStatus"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/GetSandUsageStatus",
+      "name": "GetSandUsageStatus",
+      "evidence": "historical-audit/28",
+      "evidenceRefs": [
+        "historical-audit/28"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "GetSandUsageStatus"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/GetUserPrepaidBilling",
+      "name": "GetUserPrepaidBilling",
+      "evidence": "historical-audit/36",
+      "evidenceRefs": [
+        "historical-audit/36"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "GetUserPrepaidBilling"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/GetUserPrivacyMode",
+      "name": "GetUserPrivacyMode",
+      "evidence": "historical-audit/37",
+      "evidenceRefs": [
+        "historical-audit/37"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "GetUserPrivacyMode"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/ListMarketplacePlugins",
+      "name": "ListMarketplacePlugins",
+      "evidence": "historical-audit/38",
+      "evidenceRefs": [
+        "historical-audit/38"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "ListMarketplacePlugins"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/ListMarketplaces",
+      "name": "ListMarketplaces",
+      "evidence": "historical-audit/39",
+      "evidenceRefs": [
+        "historical-audit/39"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "ListMarketplaces"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/ListSandMachines",
+      "name": "ListSandMachines",
+      "evidence": "historical-audit/40",
+      "evidenceRefs": [
+        "historical-audit/40"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "ListSandMachines"
+    },
+    {
+      "id": "aiserver.v1.DashboardService/ListSandMcpTools",
+      "name": "ListSandMcpTools",
+      "evidence": "historical-audit/41",
+      "evidenceRefs": [
+        "historical-audit/41"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "DashboardService",
+      "method": "ListSandMcpTools"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/BeginGrokBotAttachmentUpload",
+      "name": "BeginGrokBotAttachmentUpload",
+      "evidence": "historical-audit/attachments.json#uploads",
+      "evidenceRefs": [
+        "historical-audit/attachments.json#uploads",
+        "historical-audit/strict-upload.json"
+      ],
+      "scope": "Mandatory store single-put upload branch completed; Unicode/binary/5MiB download SHA-256 readback. Strict retained CLI uploaded and byte-identically downloaded a fixture using SINGLE_PUT-only options.",
+      "restrictions": [
+        "SINGLE_PUT/store only; multipart, expired-target refresh, abort and USE_BOX not verified.",
+        "Largest verified payload5MiB."
+      ],
+      "proofLevel": "mandatory_helper_path_with_end_to_end_cli_proof",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "BeginGrokBotAttachmentUpload",
+      "allowedRequestFields": [
+        "agentId",
+        "sessionId",
+        "fileName",
+        "sizeBytes",
+        "supportsStoreAttachmentRefs",
+        "supportsMultipart",
+        "sha256Hex"
+      ],
+      "maxIntegerFields": {
+        "sizeBytes": "5242880"
+      },
+      "requiredRequestFields": [
+        "supportsMultipart",
+        "supportsStoreAttachmentRefs",
+        "sizeBytes"
+      ],
+      "allowedFieldValues": {
+        "supportsMultipart": [
+          false
+        ],
+        "supportsStoreAttachmentRefs": [
+          true
+        ]
+      },
+      "minIntegerFields": {
+        "sizeBytes": "1"
+      },
+      "flagEvidenceBasis": "Actual successful CLI and mandatory source argument construction set supportsMultipart:false, supportsStoreAttachmentRefs:true. HTTP-body observer missed capture; flags are not claimed wire-observed."
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/CheckGrokBotEmailAddressAvailability",
+      "name": "CheckGrokBotEmailAddressAvailability",
+      "evidence": "historical-audit/availability",
+      "evidenceRefs": [
+        "historical-audit/availability"
+      ],
+      "scope": "Neutral candidate username returned AVAILABLE; no inbox created.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "CheckGrokBotEmailAddressAvailability"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/CompleteGrokBotAttachmentUpload",
+      "name": "CompleteGrokBotAttachmentUpload",
+      "evidence": "historical-audit/attachments.json#uploads",
+      "evidenceRefs": [
+        "historical-audit/attachments.json#uploads"
+      ],
+      "scope": "Mandatory store single-put upload branch completed; Unicode/binary/5MiB download SHA-256 readback.",
+      "restrictions": [
+        "SINGLE_PUT/store only; multipart, expired-target refresh, abort and USE_BOX not verified.",
+        "Largest verified payload5MiB."
+      ],
+      "proofLevel": "mandatory_helper_path_with_end_to_end_cli_proof",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "CompleteGrokBotAttachmentUpload",
+      "allowedRequestFields": [
+        "uploadToken"
+      ]
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/CreateGrokBotAgent",
+      "name": "CreateGrokBotAgent",
+      "evidence": "historical-audit/botCreate",
+      "evidenceRefs": [
+        "historical-audit/botCreate"
+      ],
+      "scope": "Create isolated temporal bot; response and roster readback.",
+      "restrictions": [
+        "Temporal harness only; BOX request did not produce a box."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "CreateGrokBotAgent",
+      "allowedRequestFields": [
+        "agentId",
+        "name",
+        "description",
+        "title",
+        "harness",
+        "kickstartRequested",
+        "introductionSuppressed",
+        "createIntent",
+        "createCaller",
+        "createdAutomatically"
+      ],
+      "requiredRequestFields": [
+        "harness"
+      ],
+      "allowedFieldValues": {
+        "harness": [
+          "GROK_BOT_AGENT_HARNESS_KIND_TEMPORAL"
+        ]
+      }
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/CreateGrokBotRoom",
+      "name": "CreateGrokBotRoom",
+      "evidence": "historical-audit/roomCreate",
+      "evidenceRefs": [
+        "historical-audit/roomCreate"
+      ],
+      "scope": "Private room with owned bot members; roster readback.",
+      "restrictions": [
+        "No human participants tested."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "CreateGrokBotRoom",
+      "allowedRequestFields": [
+        "agentId",
+        "name",
+        "description",
+        "memberAgentIds"
+      ],
+      "nonEmptyArrayFields": [
+        "memberAgentIds"
+      ]
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/DeleteGrokBotAgent",
+      "name": "DeleteGrokBotAgent",
+      "evidence": "historical-audit/cleanup",
+      "evidenceRefs": [
+        "historical-audit/cleanup"
+      ],
+      "scope": "Delete isolated bot/room using agent UUID; absence readback.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "DeleteGrokBotAgent"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/DeleteGrokBotAgentAutomation",
+      "name": "DeleteGrokBotAgentAutomation",
+      "evidence": "historical-audit/19",
+      "evidenceRefs": [
+        "historical-audit/19"
+      ],
+      "scope": "Delete disposable routine and verify absence.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "DeleteGrokBotAgentAutomation"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/DismissGrokBotWidget",
+      "name": "DismissGrokBotWidget",
+      "evidence": "historical-audit/widget-dismiss.json#verification",
+      "evidenceRefs": [
+        "historical-audit/widget-dismiss.json#verification"
+      ],
+      "scope": "Actual CLI dismissed a fixture widget; persisted entry.widgetDismissed is true.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "DismissGrokBotWidget"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/GetGrokBotAgentAccess",
+      "name": "GetGrokBotAgentAccess",
+      "evidence": "historical-audit/80",
+      "evidenceRefs": [
+        "historical-audit/80"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "GetGrokBotAgentAccess"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/GetGrokBotRuntimeCapabilities",
+      "name": "GetGrokBotRuntimeCapabilities",
+      "evidence": "historical-audit/75",
+      "evidenceRefs": [
+        "historical-audit/75"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "GetGrokBotRuntimeCapabilities"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/GetGrokBotSendStatus",
+      "name": "GetGrokBotSendStatus",
+      "evidence": "historical-audit/94",
+      "evidenceRefs": [
+        "historical-audit/94"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "GetGrokBotSendStatus"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/GetGrokBotTemplateExportPolicy",
+      "name": "GetGrokBotTemplateExportPolicy",
+      "evidence": "historical-audit/89",
+      "evidenceRefs": [
+        "historical-audit/89"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "GetGrokBotTemplateExportPolicy"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/GetGrokBotTemplateImportDetails",
+      "name": "GetGrokBotTemplateImportDetails",
+      "evidence": "historical-audit/93",
+      "evidenceRefs": [
+        "historical-audit/93"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "GetGrokBotTemplateImportDetails"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/GetGrokBotTermsSeen",
+      "name": "GetGrokBotTermsSeen",
+      "evidence": "historical-audit/72",
+      "evidenceRefs": [
+        "historical-audit/72"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "GetGrokBotTermsSeen"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/GetGrokBotUserMcpSettings",
+      "name": "GetGrokBotUserMcpSettings",
+      "evidence": "historical-audit/69",
+      "evidenceRefs": [
+        "historical-audit/69"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "GetGrokBotUserMcpSettings"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/GetGrokBotUserRuntimeSettings",
+      "name": "GetGrokBotUserRuntimeSettings",
+      "evidence": "historical-audit/70",
+      "evidenceRefs": [
+        "historical-audit/70"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "GetGrokBotUserRuntimeSettings"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/GetPublicGrokBotMarketplaceListing",
+      "name": "GetPublicGrokBotMarketplaceListing",
+      "evidence": "historical-audit/92",
+      "evidenceRefs": [
+        "historical-audit/92"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "GetPublicGrokBotMarketplaceListing"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/GetPublicGrokBotTemplate",
+      "name": "GetPublicGrokBotTemplate",
+      "evidence": "historical-audit/90",
+      "evidenceRefs": [
+        "historical-audit/90"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "GetPublicGrokBotTemplate"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/GetSandBoxRunState",
+      "name": "GetSandBoxRunState",
+      "evidence": "historical-audit/45",
+      "evidenceRefs": [
+        "historical-audit/45"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "GetSandBoxRunState"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/InterruptGrokBotAgentRun",
+      "service": "GrokBotService",
+      "method": "InterruptGrokBotAgentRun",
+      "name": "InterruptGrokBotAgentRun",
+      "evidence": "historical-audit/final-lifecycle.json#stop",
+      "evidenceRefs": [
+        "historical-audit/final-lifecycle.json#stop"
+      ],
+      "scope": "Actual local sleep30 running on disposable bot; before isRunning:true, interruption hadActiveRun:true and after stopped.",
+      "restrictions": [
+        "Only own currently running turn; no broad task cancellation."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "allowedRequestFields": [
+        "agentId",
+        "sessionId",
+        "reason"
+      ]
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ListGrokBotAgentAccessPrincipals",
+      "name": "ListGrokBotAgentAccessPrincipals",
+      "evidence": "historical-audit/79",
+      "evidenceRefs": [
+        "historical-audit/79"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ListGrokBotAgentAccessPrincipals"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ListGrokBotAgentAutomations",
+      "name": "ListGrokBotAgentAutomations",
+      "evidence": "historical-audit/16",
+      "evidenceRefs": [
+        "historical-audit/16"
+      ],
+      "scope": "Nonempty native routine record read from disposable temporal bot, including completed webhook run.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ListGrokBotAgentAutomations"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ListGrokBotAgentStatuses",
+      "name": "ListGrokBotAgentStatuses",
+      "evidence": "historical-audit/55",
+      "evidenceRefs": [
+        "historical-audit/55"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ListGrokBotAgentStatuses"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ListGrokBotAgents",
+      "name": "ListGrokBotAgents",
+      "evidence": "historical-audit/73",
+      "evidenceRefs": [
+        "historical-audit/73"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ListGrokBotAgents"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ListGrokBotEmailInboxes",
+      "name": "ListGrokBotEmailInboxes",
+      "evidence": "historical-audit/list",
+      "evidenceRefs": [
+        "historical-audit/list"
+      ],
+      "scope": "Existing inbox metadata list returned; no mail body read or modification.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ListGrokBotEmailInboxes"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ListGrokBotTranscriptEntries",
+      "name": "ListGrokBotTranscriptEntries",
+      "evidence": "historical-audit/54",
+      "evidenceRefs": [
+        "historical-audit/54"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ListGrokBotTranscriptEntries"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ListGrokBotUserComputers",
+      "name": "ListGrokBotUserComputers",
+      "evidence": "historical-audit/96",
+      "evidenceRefs": [
+        "historical-audit/96"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ListGrokBotUserComputers"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ListPublicGrokBotMarketplaceListings",
+      "name": "ListPublicGrokBotMarketplaceListings",
+      "evidence": "historical-audit/91",
+      "evidenceRefs": [
+        "historical-audit/91"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ListPublicGrokBotMarketplaceListings"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ListSandBoxStoreObjects",
+      "name": "ListSandBoxStoreObjects",
+      "evidence": "historical-audit/44",
+      "evidenceRefs": [
+        "historical-audit/44"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ListSandBoxStoreObjects"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ListSandBoxes",
+      "name": "ListSandBoxes",
+      "evidence": "historical-audit/47",
+      "evidenceRefs": [
+        "historical-audit/47"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ListSandBoxes"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ReadGrokBotAgentAttachmentChunk",
+      "name": "ReadGrokBotAgentAttachmentChunk",
+      "evidence": "historical-audit/57",
+      "evidenceRefs": [
+        "historical-audit/57"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ReadGrokBotAgentAttachmentChunk"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/ResolveGrokBotAttachmentReads",
+      "name": "ResolveGrokBotAttachmentReads",
+      "evidence": "historical-audit/16",
+      "evidenceRefs": [
+        "historical-audit/16"
+      ],
+      "scope": "Actual named API returns signed reads for3 uploaded fixtures; independent byte-identical downloads.",
+      "restrictions": [
+        "Signed URLs are credentials and are not printed."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "ResolveGrokBotAttachmentReads"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/RespondGrokBotWidget",
+      "name": "RespondGrokBotWidget",
+      "evidence": "historical-audit/respondedValue",
+      "evidenceRefs": [
+        "historical-audit/respondedValue"
+      ],
+      "scope": "Actual companion CLI selected Alpha and persisted widget respondedValue is Alpha.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "RespondGrokBotWidget"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/SendGrokBotAgentMessage",
+      "name": "SendGrokBotAgentMessage",
+      "evidence": "historical-audit/handoff.json",
+      "evidenceRefs": [
+        "historical-audit/handoff.json"
+      ],
+      "scope": "Owned peer bot received exact correlated handoff text; peer cleaned up.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "SendGrokBotAgentMessage",
+      "allowedRequestFields": [
+        "fromAgentId",
+        "toAgentId",
+        "messageId",
+        "text",
+        "sentAtMs"
+      ]
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/SendGrokBotUserMessage",
+      "name": "SendGrokBotUserMessage",
+      "evidence": "historical-audit/root-evidence.json#11",
+      "evidenceRefs": [
+        "historical-audit/root-evidence.json#11"
+      ],
+      "scope": "Send unique text to isolated temporal bot; accepted status and exact persisted reply.",
+      "restrictions": [
+        "Temporal backend route only.",
+        "Reply-to/fork/rich-text/task-id variants not live-verified."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "SendGrokBotUserMessage",
+      "allowedRequestFields": [
+        "agentId",
+        "messageId",
+        "text",
+        "sentAtMs",
+        "sessionId",
+        "source",
+        "initiator",
+        "sendSource",
+        "attachmentPaths",
+        "attachmentNames"
+      ]
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/SetGrokBotAgentAutomationEnabled",
+      "name": "SetGrokBotAgentAutomationEnabled",
+      "evidence": "historical-audit/4",
+      "evidenceRefs": [
+        "historical-audit/4"
+      ],
+      "scope": "Toggle actual routine enabled/disabled and independently read back both states.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "SetGrokBotAgentAutomationEnabled"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/SetGrokBotAgentClientState",
+      "name": "SetGrokBotAgentClientState",
+      "evidence": "historical-audit/bot-state.json",
+      "evidenceRefs": [
+        "historical-audit/bot-state.json"
+      ],
+      "scope": "Fixture client-state changed and status readback confirmed; original restored.",
+      "restrictions": [
+        "Exact flag/field record incomplete; no broad state-field claim."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "SetGrokBotAgentClientState",
+      "allowedRequestFields": [
+        "agentId",
+        "markRead",
+        "markUnread",
+        "notificationsEnabled",
+        "notifyOnUpdatesEnabled"
+      ],
+      "mutuallyExclusiveTrueFields": [
+        [
+          "markRead",
+          "markUnread"
+        ]
+      ]
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/SetGrokBotMainAgent",
+      "name": "SetGrokBotMainAgent",
+      "evidence": "historical-audit/account-state.json#log",
+      "evidenceRefs": [
+        "historical-audit/account-state.json#log"
+      ],
+      "scope": "Switch main bot, read back, restore original main bot.",
+      "restrictions": [
+        "Account-wide effect; only explicitly requested changes."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "SetGrokBotMainAgent"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/SetGrokBotRoomMembers",
+      "name": "SetGrokBotRoomMembers",
+      "evidence": "historical-audit/final-lifecycle.json#membership",
+      "evidenceRefs": [
+        "historical-audit/roomMembersNonempty",
+        "historical-audit/final-lifecycle.json#membership"
+      ],
+      "scope": "Actual private room changed from2 owned bot members to1; entry.memberAgentIds matched; room and peer removed.",
+      "restrictions": [
+        "Empty set refused; forbid empty membership."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "SetGrokBotRoomMembers",
+      "allowedRequestFields": [
+        "agentId",
+        "memberAgentIds"
+      ],
+      "nonEmptyArrayFields": [
+        "memberAgentIds"
+      ]
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/StatSandBoxStoreObject",
+      "name": "StatSandBoxStoreObject",
+      "evidence": "historical-audit/43",
+      "evidenceRefs": [
+        "historical-audit/43"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "StatSandBoxStoreObject"
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/UpdateGrokBotAgent",
+      "name": "UpdateGrokBotAgent",
+      "evidence": "historical-audit/botProfileUpdate",
+      "evidenceRefs": [
+        "historical-audit/botProfileUpdate"
+      ],
+      "scope": "Update description/title using numeric roster record id; persistent readback.",
+      "restrictions": [
+        "Verified fields: description,title,partialUpdate."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "UpdateGrokBotAgent",
+      "allowedRequestFields": [
+        "id",
+        "description",
+        "title",
+        "partialUpdate"
+      ],
+      "requiredRequestFields": [
+        "partialUpdate"
+      ],
+      "allowedFieldValues": {
+        "partialUpdate": [
+          true
+        ]
+      }
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/UpdateGrokBotUserRuntimeSettings",
+      "name": "UpdateGrokBotUserRuntimeSettings",
+      "evidence": "historical-audit/account-state.json#log",
+      "evidenceRefs": [
+        "historical-audit/account-state.json#log"
+      ],
+      "scope": "Change pinned runtime setting, read back and restore original.",
+      "restrictions": [
+        "Pinned-agents setting tested; not every runtime setting."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "UpdateGrokBotUserRuntimeSettings",
+      "allowedRequestFields": [
+        "pinnedAgents"
+      ]
+    },
+    {
+      "id": "aiserver.v1.GrokBotService/WatchGrokBotTranscripts",
+      "name": "WatchGrokBotTranscripts",
+      "evidence": "historical-audit/root-evidence.json#18",
+      "evidenceRefs": [
+        "historical-audit/root-evidence.json#18"
+      ],
+      "scope": "Authenticated stream delivered a new fixture message event.",
+      "restrictions": [
+        "Single fixture watch verified; unlisted-agents/all-bots/reconnect variants not claimed."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "GrokBotService",
+      "method": "WatchGrokBotTranscripts"
+    },
+    {
+      "id": "aiserver.v1.SandBoxService/GetSandBoxRunState",
+      "name": "GetSandBoxRunState",
+      "evidence": "historical-audit/107",
+      "evidenceRefs": [
+        "historical-audit/107"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "SandBoxService",
+      "method": "GetSandBoxRunState"
+    },
+    {
+      "id": "aiserver.v1.SandBoxService/ListSandBoxStoreObjects",
+      "name": "ListSandBoxStoreObjects",
+      "evidence": "historical-audit/106",
+      "evidenceRefs": [
+        "historical-audit/106"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "SandBoxService",
+      "method": "ListSandBoxStoreObjects"
+    },
+    {
+      "id": "aiserver.v1.SandBoxService/ListSandBoxes",
+      "name": "ListSandBoxes",
+      "evidence": "historical-audit/109",
+      "evidenceRefs": [
+        "historical-audit/109"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "SandBoxService",
+      "method": "ListSandBoxes"
+    },
+    {
+      "id": "aiserver.v1.SandBoxService/StatSandBoxStoreObject",
+      "name": "StatSandBoxStoreObject",
+      "evidence": "historical-audit/105",
+      "evidenceRefs": [
+        "historical-audit/105"
+      ],
+      "scope": "Exact read request recorded in probe; expected response fields/types confirmed.",
+      "restrictions": [
+        "Read-only scope; use actual owned identifiers.",
+        "No claim that every request field or response variant was exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "service": "SandBoxService",
+      "method": "StatSandBoxStoreObject"
+    }
+  ],
+  "gateway": [
+    {
+      "id": "gateway/getAgentChannels",
+      "name": "getAgentChannels",
+      "evidence": "historical-audit/28",
+      "evidenceRefs": [
+        "historical-audit/28"
+      ],
+      "scope": "Three channel manifests returned; existing connections empty, connect/disconnect not verified.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getAgentChannels"
+    },
+    {
+      "id": "gateway/getAgentNotificationAvatar",
+      "name": "getAgentNotificationAvatar",
+      "evidence": "historical-audit/32",
+      "evidenceRefs": [
+        "historical-audit/32"
+      ],
+      "scope": "Nonempty default avatar name/shape/color metadata returned; custom image rendering not tested.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getAgentNotificationAvatar"
+    },
+    {
+      "id": "gateway/getAgentThread",
+      "name": "getAgentThread",
+      "evidence": "historical-audit/43",
+      "evidenceRefs": [
+        "historical-audit/43"
+      ],
+      "scope": "One entry returned for an actual fixture root message.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getAgentThread"
+    },
+    {
+      "id": "gateway/getAgentTranscript",
+      "name": "getAgentTranscript",
+      "evidence": "historical-audit/38",
+      "evidenceRefs": [
+        "historical-audit/38"
+      ],
+      "scope": "Five actual fixture entries crosschecked with backend history.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getAgentTranscript"
+    },
+    {
+      "id": "gateway/getAgentTranscriptPage",
+      "name": "getAgentTranscriptPage",
+      "evidence": "historical-audit/40",
+      "evidenceRefs": [
+        "historical-audit/40"
+      ],
+      "scope": "Six actual fixture entries returned as conversation advanced.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getAgentTranscriptPage"
+    },
+    {
+      "id": "gateway/getAgentTranscriptTail",
+      "name": "getAgentTranscriptTail",
+      "evidence": "historical-audit/42",
+      "evidenceRefs": [
+        "historical-audit/42"
+      ],
+      "scope": "Six actual fixture entries returned.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getAgentTranscriptTail"
+    },
+    {
+      "id": "gateway/getAgentTranscriptWindow",
+      "name": "getAgentTranscriptWindow",
+      "evidence": "historical-audit/41",
+      "evidenceRefs": [
+        "historical-audit/41"
+      ],
+      "scope": "Six actual fixture entries and typed thread-count map returned.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getAgentTranscriptWindow"
+    },
+    {
+      "id": "gateway/getAgentWorkflows",
+      "name": "getAgentWorkflows",
+      "evidence": "historical-audit/25",
+      "evidenceRefs": [
+        "historical-audit/25"
+      ],
+      "scope": "Nonempty104 workflow/skill catalog rows for owned scope; no run or mutation.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getAgentWorkflows"
+    },
+    {
+      "id": "gateway/getBotTemplateExportPolicy",
+      "name": "getBotTemplateExportPolicy",
+      "evidence": "historical-audit/46",
+      "evidenceRefs": [
+        "historical-audit/46"
+      ],
+      "scope": "Explicit exportPolicy all returned; no template export/publish tested.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getBotTemplateExportPolicy"
+    },
+    {
+      "id": "gateway/getEffectiveMcpPlugins",
+      "name": "getEffectiveMcpPlugins",
+      "evidence": "historical-audit/18",
+      "evidenceRefs": [
+        "historical-audit/18"
+      ],
+      "scope": "Nonempty effective plugin list with9 entries.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getEffectiveMcpPlugins"
+    },
+    {
+      "id": "gateway/getHostSettings",
+      "name": "getHostSettings",
+      "evidence": "historical-audit/4",
+      "evidenceRefs": [
+        "historical-audit/4"
+      ],
+      "scope": "Nonempty host settings structure returned from authenticated gateway.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getHostSettings"
+    },
+    {
+      "id": "gateway/getHostStatus",
+      "name": "getHostStatus",
+      "evidence": "historical-audit/47",
+      "evidenceRefs": [
+        "historical-audit/47"
+      ],
+      "scope": "Concrete hostVersion/latestHostVersion and3 capability identifiers returned.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getHostStatus"
+    },
+    {
+      "id": "gateway/getListenerIntegrations",
+      "name": "getListenerIntegrations",
+      "evidence": "historical-audit/16",
+      "evidenceRefs": [
+        "historical-audit/16"
+      ],
+      "scope": "Nonempty integration manifest/state list with6 entries; no connection changes.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getListenerIntegrations"
+    },
+    {
+      "id": "gateway/getMcpCatalog",
+      "name": "getMcpCatalog",
+      "evidence": "historical-audit/17",
+      "evidenceRefs": [
+        "historical-audit/17"
+      ],
+      "scope": "Nonempty plugin catalog with453 typed entries; no installation.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getMcpCatalog"
+    },
+    {
+      "id": "gateway/getMcpState",
+      "name": "getMcpState",
+      "evidence": "historical-audit/12",
+      "evidenceRefs": [
+        "historical-audit/12"
+      ],
+      "scope": "Nonempty connected-server state with13 entries; no writes/grants tested.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "getMcpState"
+    },
+    {
+      "id": "gateway/isEgressTunnelAvailable",
+      "name": "isEgressTunnelAvailable",
+      "evidence": "historical-audit/7",
+      "evidenceRefs": [
+        "historical-audit/7"
+      ],
+      "scope": "Explicit true capability flag returned; no network tunnel use exercised.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "isEgressTunnelAvailable"
+    },
+    {
+      "id": "gateway/isGlobalSearchEnabled",
+      "name": "isGlobalSearchEnabled",
+      "evidence": "historical-audit/6",
+      "evidenceRefs": [
+        "historical-audit/6"
+      ],
+      "scope": "Explicit true capability flag returned; does not prove searchAgents matching.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "isGlobalSearchEnabled"
+    },
+    {
+      "id": "gateway/listAgents",
+      "name": "listAgents",
+      "evidence": "historical-audit/2",
+      "evidenceRefs": [
+        "historical-audit/2"
+      ],
+      "scope": "Nonempty owned-account roster with7 typed agent records.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "listAgents"
+    },
+    {
+      "id": "gateway/listMcpServerTools",
+      "name": "listMcpServerTools",
+      "evidence": "historical-audit/52",
+      "evidenceRefs": [
+        "historical-audit/52"
+      ],
+      "scope": "Nonempty12-tool list for an existing connected server; tool execution separate.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "listMcpServerTools"
+    },
+    {
+      "id": "gateway/readMainAgentContext",
+      "name": "readMainAgentContext",
+      "evidence": "historical-audit/30",
+      "evidenceRefs": [
+        "historical-audit/30"
+      ],
+      "scope": "Concrete main-agent id and idle state returned; active-call/nudge behavior not tested.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "readMainAgentContext"
+    },
+    {
+      "id": "gateway/skillsCatalog",
+      "name": "skillsCatalog",
+      "evidence": "historical-audit/9",
+      "evidenceRefs": [
+        "historical-audit/9"
+      ],
+      "scope": "Nonempty catalog with1729 typed entries; read/discovery only.",
+      "restrictions": [
+        "Gateway method verified only for recorded payload; no implicit BOX harness or write support."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "method": "skillsCatalog"
+    }
+  ],
+  "commands": [
+    {
+      "id": "cli/artifact-refs",
+      "name": "artifact-refs",
+      "evidence": "historical-audit/artifact-refs-after-message.json#value",
+      "evidenceRefs": [
+        "historical-audit/artifact-refs-after-message.json#value"
+      ],
+      "scope": "Two concrete transcript attachment references found after sent attachment.",
+      "restrictions": [
+        "Transcript-reference inventory only; native filesystem file listing unsupported."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/artifacts",
+      "name": "artifacts",
+      "evidence": "historical-audit/artifact-refs-after-message.json#value",
+      "evidenceRefs": [
+        "historical-audit/artifact-refs-after-message.json#value"
+      ],
+      "scope": "Two concrete transcript attachment references found after sent attachment.",
+      "restrictions": [
+        "Transcript-reference inventory only; native filesystem file listing unsupported."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/auth-refresh",
+      "name": "auth-refresh",
+      "evidence": "historical-audit/read-plan.md",
+      "evidenceRefs": [
+        "historical-audit/read-plan.md"
+      ],
+      "scope": "Operational authentication plumbing retained by root; not included in live-verified feature counts.",
+      "restrictions": [
+        "No new browser login/logout cycle performed during this verification.",
+        "Use isolated credential storage for destructive auth tests."
+      ],
+      "proofLevel": "operational_exemption_not_live_verified",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "notCountedAsLiveVerified": true
+    },
+    {
+      "id": "cli/auth-status",
+      "name": "auth-status",
+      "evidence": "historical-audit/read-plan.md",
+      "evidenceRefs": [
+        "historical-audit/read-plan.md"
+      ],
+      "scope": "Operational authentication plumbing retained by root; not included in live-verified feature counts.",
+      "restrictions": [
+        "No new browser login/logout cycle performed during this verification.",
+        "Use isolated credential storage for destructive auth tests."
+      ],
+      "proofLevel": "operational_exemption_not_live_verified",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "notCountedAsLiveVerified": true
+    },
+    {
+      "id": "cli/bot-create",
+      "name": "bot-create",
+      "evidence": "historical-audit/botCreate",
+      "evidenceRefs": [
+        "historical-audit/botCreate"
+      ],
+      "scope": "Create temporal isolated bot and confirm roster.",
+      "restrictions": [
+        "--harness temporal only; no real BOX available."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "requiredHarness": "temporal"
+    },
+    {
+      "id": "cli/bot-delete",
+      "name": "bot-delete",
+      "evidence": "historical-audit/cleanup",
+      "evidenceRefs": [
+        "historical-audit/cleanup"
+      ],
+      "scope": "Delete test bot and room then confirm both absent.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/bot-main",
+      "name": "bot-main",
+      "evidence": "historical-audit/account-state.json#log",
+      "evidenceRefs": [
+        "historical-audit/account-state.json#log"
+      ],
+      "scope": "Main bot switched, read back and restored.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/bot-state",
+      "name": "bot-state",
+      "evidence": "historical-audit/bot-state.json",
+      "evidenceRefs": [
+        "historical-audit/bot-state.json"
+      ],
+      "scope": "Fixture notification flags changed, independently read back and restored.",
+      "restrictions": [
+        "Only notificationsEnabled and notifyOnUpdatesEnabled patch fields."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "allowedPatchFields": [
+        "notificationsEnabled",
+        "notifyOnUpdatesEnabled"
+      ]
+    },
+    {
+      "id": "cli/bot-update",
+      "name": "bot-update",
+      "evidence": "historical-audit/botProfileUpdate",
+      "evidenceRefs": [
+        "historical-audit/botProfileUpdate"
+      ],
+      "scope": "Update title/description and independently verify.",
+      "restrictions": [
+        "Title/description/partial-update scope; custom avatar/other patch fields not live-verified."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "allowedPatchFields": [
+        "description",
+        "title",
+        "partialUpdate"
+      ]
+    },
+    {
+      "id": "cli/capabilities",
+      "name": "capabilities",
+      "evidence": "historical-audit/backend-read-probes.json",
+      "evidenceRefs": [
+        "historical-audit/backend-read-probes.json"
+      ],
+      "scope": "Native runtime capability response returned positive feature flags; convenience uses same read path.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/download",
+      "name": "download",
+      "evidence": "historical-audit/attachments.json#summary",
+      "evidenceRefs": [
+        "historical-audit/attachments.json#summary",
+        "historical-audit/strict-upload.json"
+      ],
+      "scope": "Unicode, binary and5MiB store files roundtripped byte-identically. Final strict-mode CLI upload/download also passed.",
+      "restrictions": [
+        "Store SINGLE_PUT only; reject/use no --gateway or --connect fallback.",
+        "Largest tested payload5MiB; multipart, expired-target refresh and abort branch unsupported."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/gateway-connect",
+      "name": "gateway-connect",
+      "evidence": "historical-audit/1",
+      "evidenceRefs": [
+        "historical-audit/1"
+      ],
+      "scope": "Explicit authorized connect resolved live gateway and stored descriptor privately.",
+      "restrictions": [
+        "Explicit wake only; gateway-status default no-wake failure not verified as functioning feature."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/gateway-status",
+      "name": "gateway-status",
+      "evidence": "historical-audit/gateway-status-final.json#value",
+      "evidenceRefs": [
+        "historical-audit/gateway-status-final.json#value"
+      ],
+      "scope": "Actual CLI reported connected:true/status200 using current authorized gateway.",
+      "restrictions": [
+        "Default no-wake status read verified after explicit connection."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/handoff",
+      "name": "handoff",
+      "evidence": "historical-audit/handoff.json",
+      "evidenceRefs": [
+        "historical-audit/handoff.json"
+      ],
+      "scope": "Controlled own-bot handoff persisted exact correlated text; peer removed.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/history",
+      "name": "history",
+      "evidence": "historical-audit/root-evidence.json#13",
+      "evidenceRefs": [
+        "historical-audit/root-evidence.json#13"
+      ],
+      "scope": "Persisted fixture user/reply entries returned.",
+      "restrictions": [
+        "Only documented retained paths; not every flag value live-tested."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/list",
+      "name": "list",
+      "evidence": "historical-audit/root-evidence.json#0",
+      "evidenceRefs": [
+        "historical-audit/root-evidence.json#0"
+      ],
+      "scope": "Nonempty owned bot roster with full metadata.",
+      "restrictions": [
+        "Only documented retained paths; not every flag value live-tested."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/login",
+      "name": "login",
+      "evidence": "historical-audit/read-plan.md",
+      "evidenceRefs": [
+        "historical-audit/read-plan.md"
+      ],
+      "scope": "Operational authentication plumbing retained by root; not included in live-verified feature counts.",
+      "restrictions": [
+        "No new browser login/logout cycle performed during this verification.",
+        "Use isolated credential storage for destructive auth tests."
+      ],
+      "proofLevel": "operational_exemption_not_live_verified",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "notCountedAsLiveVerified": true
+    },
+    {
+      "id": "cli/logout",
+      "name": "logout",
+      "evidence": "historical-audit/read-plan.md",
+      "evidenceRefs": [
+        "historical-audit/read-plan.md"
+      ],
+      "scope": "Operational authentication plumbing retained by root; not included in live-verified feature counts.",
+      "restrictions": [
+        "No new browser login/logout cycle performed during this verification.",
+        "Use isolated credential storage for destructive auth tests."
+      ],
+      "proofLevel": "operational_exemption_not_live_verified",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "notCountedAsLiveVerified": true
+    },
+    {
+      "id": "cli/mark-read",
+      "name": "mark-read",
+      "evidence": "historical-audit/read-state.json",
+      "evidenceRefs": [
+        "historical-audit/read-state.json"
+      ],
+      "scope": "Actual CLI changed unread state (0 then1); restored mark-read.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/mark-unread",
+      "name": "mark-unread",
+      "evidence": "historical-audit/read-state.json",
+      "evidenceRefs": [
+        "historical-audit/read-state.json"
+      ],
+      "scope": "Actual CLI changed unread state (0 then1); restored mark-read.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/room-create",
+      "name": "room-create",
+      "evidence": "historical-audit/roomCreate",
+      "evidenceRefs": [
+        "historical-audit/roomCreate"
+      ],
+      "scope": "Create private room containing an owned bot.",
+      "restrictions": [
+        "No --humans; owned bot membership only."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "disallowedFlags": [
+        "humans"
+      ]
+    },
+    {
+      "id": "cli/room-members",
+      "name": "room-members",
+      "evidence": "historical-audit/final-lifecycle.json#membership",
+      "evidenceRefs": [
+        "historical-audit/roomMembersNonempty",
+        "historical-audit/final-lifecycle.json#membership"
+      ],
+      "scope": "Actual private room changed from2 owned bot members to1; entry.memberAgentIds matched; room and peer removed.",
+      "restrictions": [
+        "Forbid empty member set; no human membership changes."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "requiresNonEmptyMembers": true
+    },
+    {
+      "id": "cli/rooms",
+      "name": "rooms",
+      "evidence": "historical-audit/roomCreate",
+      "evidenceRefs": [
+        "historical-audit/roomCreate"
+      ],
+      "scope": "Nonempty owned private room returned after creation.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/routine-create",
+      "name": "routine-create",
+      "evidence": "historical-audit/routines.json#verification",
+      "evidenceRefs": [
+        "historical-audit/routines.json#verification"
+      ],
+      "scope": "Disabled native webhook routine created through bot and independently found.",
+      "restrictions": [
+        "Temporal native routine only.",
+        "routine-create requires --via-bot; direct gateway creation not supported."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "requiredFlags": [
+        "via-bot"
+      ]
+    },
+    {
+      "id": "cli/routine-delete",
+      "name": "routine-delete",
+      "evidence": "historical-audit/routines.json#verification",
+      "evidenceRefs": [
+        "historical-audit/routines.json#verification"
+      ],
+      "scope": "Owned routine deleted and absence verified.",
+      "restrictions": [
+        "No direct box/gateway routine path verified."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/routine-disable",
+      "name": "routine-disable",
+      "evidence": "historical-audit/routines.json#verification",
+      "evidenceRefs": [
+        "historical-audit/routines.json#verification"
+      ],
+      "scope": "Native owned routine disabled and independently read back.",
+      "restrictions": [
+        "No direct box/gateway routine path verified."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/routine-enable",
+      "name": "routine-enable",
+      "evidence": "historical-audit/routines.json#verification",
+      "evidenceRefs": [
+        "historical-audit/routines.json#verification"
+      ],
+      "scope": "Native owned routine enabled and independently read back.",
+      "restrictions": [
+        "No direct box/gateway routine path verified."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/routines",
+      "name": "routines",
+      "evidence": "historical-audit/routines.json#verification",
+      "evidenceRefs": [
+        "historical-audit/routines.json#verification"
+      ],
+      "scope": "List routines for an explicitly selected bot; positive per-bot entity evidence only.",
+      "restrictions": [
+        "No direct box/gateway routine path verified.",
+        "BOT is required; account-wide metadata-only listing is not supported."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/search",
+      "name": "search",
+      "evidence": "historical-audit/root-evidence.json#14",
+      "evidenceRefs": [
+        "historical-audit/root-evidence.json#14"
+      ],
+      "scope": "Unique fixture nonce found through3 actual pages.",
+      "restrictions": [
+        "Only documented retained paths; not every flag value live-tested."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/send",
+      "name": "send",
+      "evidence": "historical-audit/root-evidence.json#11",
+      "evidenceRefs": [
+        "historical-audit/root-evidence.json#11",
+        "historical-audit/wait-reply-fix.json#results"
+      ],
+      "scope": "Exact correlated response persisted for a controlled temporal-bot prompt. Attachment-first correlation fix and final response verified.",
+      "restrictions": [
+        "Only documented retained paths; not every flag value live-tested."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "disallowedFlags": [
+        "reply-to",
+        "fork",
+        "rich-text",
+        "rich-text-file",
+        "task-id",
+        "session",
+        "gateway",
+        "connect"
+      ]
+    },
+    {
+      "id": "cli/send-status",
+      "name": "send-status",
+      "evidence": "historical-audit/root-evidence.json#12",
+      "evidenceRefs": [
+        "historical-audit/root-evidence.json#12"
+      ],
+      "scope": "Known sent message status returned.",
+      "restrictions": [
+        "Only documented retained paths; not every flag value live-tested."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/settings",
+      "name": "settings",
+      "evidence": "historical-audit/runtime-settings-before.json",
+      "evidenceRefs": [
+        "historical-audit/runtime-settings-before.json"
+      ],
+      "scope": "Account runtime settings read as baseline for restore test.",
+      "restrictions": [],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/settings-update",
+      "name": "settings-update",
+      "evidence": "historical-audit/settings-pinned.json",
+      "evidenceRefs": [
+        "historical-audit/settings-pinned.json"
+      ],
+      "scope": "Pinned agents setting changed, read back and restored.",
+      "restrictions": [
+        "Pinned-agents field verified; no claim for every runtime setting."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "allowedPatchFields": [
+        "pinnedAgents"
+      ]
+    },
+    {
+      "id": "cli/status",
+      "name": "status",
+      "evidence": "historical-audit/root-evidence.json#1",
+      "evidenceRefs": [
+        "historical-audit/root-evidence.json#1"
+      ],
+      "scope": "Known fixture status returned.",
+      "restrictions": [
+        "Only documented retained paths; not every flag value live-tested."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/stop",
+      "name": "stop",
+      "evidence": "historical-audit/final-lifecycle.json#stop",
+      "evidenceRefs": [
+        "historical-audit/final-lifecycle.json#stop"
+      ],
+      "scope": "Actual local sleep30 running on disposable bot; before isRunning:true, interruption hadActiveRun:true and after stopped.",
+      "restrictions": [
+        "Only own currently running turn; no broad task cancellation."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/thread",
+      "name": "thread",
+      "evidence": "historical-audit/root-evidence.json#15",
+      "evidenceRefs": [
+        "historical-audit/root-evidence.json#15",
+        "historical-audit/wait-reply-fix.json#results"
+      ],
+      "scope": "Actual root/replies reconstructed through2 pages. Attachment-first correlation fix and final response verified.",
+      "restrictions": [
+        "Only documented retained paths; not every flag value live-tested."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/tool-call",
+      "name": "tool-call",
+      "evidence": "historical-audit/tools.json#1",
+      "evidenceRefs": [
+        "historical-audit/tools.json#1"
+      ],
+      "scope": "Actual cursor-github-get_me call returned result.success and user profile.",
+      "restrictions": [
+        "Generic connected-tool dispatch verified; each downstream tool has independent semantics.",
+        "No custom MCP config/plugin-scope override tested."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "verifiedExample": {
+        "server": "cursor-github",
+        "tool": "cursor-github-get_me",
+        "args": {}
+      },
+      "disallowedFlags": [
+        "agent",
+        "agent-id",
+        "mcp-config",
+        "mcp-config-file",
+        "plugin-scope",
+        "tool-call-id",
+        "turn-id",
+        "event-sequence",
+        "model-name",
+        "analytics-reported"
+      ]
+    },
+    {
+      "id": "cli/tools",
+      "name": "tools",
+      "evidence": "historical-audit/tools.json#0",
+      "evidenceRefs": [
+        "historical-audit/tools.json#0"
+      ],
+      "scope": "549 tools across13 current connected servers returned.",
+      "restrictions": [
+        "Default account/catalog context verified; overrides not exercised."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/updates",
+      "name": "updates",
+      "evidence": "historical-audit/updates-fix.json",
+      "evidenceRefs": [
+        "historical-audit/updates-fix.json"
+      ],
+      "scope": "Six actual entry events returned with advanced cursor; command terminated by requested timeout.",
+      "restrictions": [
+        "Single bot/recorded cursor form; broad all-agent/resume variants not claimed."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/upload",
+      "name": "upload",
+      "evidence": "historical-audit/attachments.json#uploads",
+      "evidenceRefs": [
+        "historical-audit/attachments.json#uploads",
+        "historical-audit/strict-upload.json"
+      ],
+      "scope": "Unicode, binary and5MiB store files roundtripped byte-identically. Final strict-mode CLI upload/download also passed.",
+      "restrictions": [
+        "Store SINGLE_PUT only; reject/use no --gateway or --connect fallback.",
+        "Largest tested payload5MiB; multipart, expired-target refresh and abort branch unsupported."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false,
+      "maxBytes": 5242880,
+      "allowedUploadModes": [
+        "single-put"
+      ],
+      "disallowedFlags": [
+        "gateway",
+        "connect"
+      ]
+    },
+    {
+      "id": "cli/watch",
+      "name": "watch",
+      "evidence": "historical-audit/root-evidence.json#18",
+      "evidenceRefs": [
+        "historical-audit/root-evidence.json#18"
+      ],
+      "scope": "New live fixture message delivered over stream.",
+      "restrictions": [
+        "Only documented retained paths; not every flag value live-tested."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/webhook-fire",
+      "name": "webhook-fire",
+      "evidence": "historical-audit/routines.json#verification",
+      "evidenceRefs": [
+        "historical-audit/routines.json#verification"
+      ],
+      "scope": "Authenticated webhook returned200, completed run and exact payload echo persisted.",
+      "restrictions": [
+        "No direct box/gateway routine path verified."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    },
+    {
+      "id": "cli/webhook-key",
+      "name": "webhook-key",
+      "evidence": "historical-audit/routines.json#verification",
+      "evidenceRefs": [
+        "historical-audit/routines.json#verification"
+      ],
+      "scope": "Owned routine key saved mode0600 and used successfully.",
+      "restrictions": [
+        "No direct box/gateway routine path verified."
+      ],
+      "proofLevel": "positive_live_semantic",
+      "decision": "retain_restricted",
+      "allFieldsLiveVerified": false
+    }
+  ],
+  "removedReason": "No positive live semantic proof for the exact path/mode, unavailable permission/runtime, or untestable fixture. See proposals.json for every original entry.",
+  "publicRest": {
+    "decision": "remove",
+    "count": 4,
+    "evidence": "historical-audit/public-rest.json",
+    "reason": "No authorized public API credential and no successful authenticated REST probe."
+  },
+  "relay": {
+    "decision": "remove",
+    "count": 123,
+    "evidence": "historical-audit/relay.json",
+    "reason": "No usable authenticated relay session;401 handshake."
+  },
+  "counts": {
+    "backend": 69,
+    "gateway": 21,
+    "commands": 43,
+    "liveVerifiedCommands": 39,
+    "operationalAuthCommands": 4,
+    "originalEntries": 830,
+    "additionalPublicRestRoutes": 4,
+    "totalDiscoveredEntriesIncludingPublicRest": 834,
+    "removedOrPending": 697,
+    "removedIncludingPublicRest": 701,
+    "retainedIncludingOperationalAuth": 133
+  },
+  "pendingCorrections": [],
+  "sourceFiles": {
+    "historical-audit/public-rest.json": "0db71b259568c4b5cc4e7a2c00ec12d02fff452c26a825e73678b01f47654f0e",
+    "historical-audit/gateway-box-fixture.json": "286fe6d1210c691d5f0768c2922f75c98a7ed4457ffc00edf3818b03d933da73",
+    "historical-audit/settings-pinned.json": "a2a0108bb0391e1aa4061a008aa34d0b813c3abc24298bd6dc5cbb8c6e80ef1a",
+    "historical-audit/relay.json": "f5fc78a856dc9b81f9f8c612a5ff02b0b67ef8030f91f1f21abd29b0bc5142d6",
+    "historical-audit/read-plan.md": "e484585911f2494a6288e7094ca0e8bb38df0a653089c83e8593b67020c9c62f",
+    "historical-audit/gateway.json": "915dbd9374a1a3bf83cd967fc11188fcf720a419736cfc90fe8bcfa17ba5462a",
+    "historical-audit/widget-response.json": "37ab564b98b6f4f9f857d83645d373ce7cac1e3eb8152f55076a0471a58d926f",
+    "historical-audit/routines.json": "3cc32d79f9e385feb45ba1e250b059fef372313d9eb36477171af595f38b08dc",
+    "historical-audit/runtime-settings-before.json": "ecae5c1bb6d0ee6f11647f450e1bd6180b57247b7286eb22724eb108e8cc18b1",
+    "historical-audit/lifecycle.json": "7f9b3d5131b15bba4153873da9a3942ddd601cd391c153bfb3b261dc4dffee13",
+    "historical-audit/root-evidence.json": "8f9d71bc3425accf77caae5ea42eee22ee9c9df90d63b2df528b327d7858471b",
+    "historical-audit/audio.json": "c406c4b1a65ff7138adb478a22f0a36fd2319e9d6704833f2fac67b02ea97b9e",
+    "historical-audit/tools.json": "4f713739ae9040d883d02c3a9397443b65ae2f195639800905ffd0d7e579294f",
+    "historical-audit/attachments.json": "4bc5e0c8a8a11e3914bc80e69e0ed9c92c5ec211395f00e25241765ebb863a4b",
+    "historical-audit/updates-fix.json": "9371b1f9e127b8d355e157d221ca4c0001c4abff2fbfc6a20325372f3172cb87",
+    "historical-audit/account-state.json": "74eed47fd084328c14a3f20d22e64574630bc58fd4fd33e79baf851fbce6f7b7",
+    "historical-audit/email-fixture.json": "1a22ebf6e760a593e3da76b078f4720a3ad32e992a5b2afda618643b8407b8a3",
+    "historical-audit/artifact-refs-after-message.json": "fab9e593862189bf8a783481eaa1d3f2ba6a860aabbebae126d0b706e1e0048c",
+    "historical-audit/secrets.json": "4692260f6c892093cbec177d0a72a577d358396ff53036788b26003631537c87",
+    "historical-audit/bot-state.json": "7531617ff5bf82edf4312e58f9f64ad338fcad1ce394c5f1d5743a2fbd6eebc6",
+    "historical-audit/handoff.json": "b3d7ff1fa874bee564b2acf62a705df4efb08f2a9f0a4348fe1f6f47cfb78c1f",
+    "historical-audit/wait-reply-fix.json": "93beed82a9dc5821ed8bf57640e667fd0a7e75b5a7ffe1455df53caa5477f4d9",
+    "historical-audit/backend-read-probes.json": "0cc0051ba3e5008a42a044efc0571d5a7fae5edafc20e2941857b1b76b4f905a",
+    "historical-audit/read-state.json": "8734c28c2c3018e4918b56326a573413932a195e48ac338fd9149ea4f9caf509",
+    "historical-audit/widget-dismiss.json": "73ec6641740e1c68831e0f17042fa176c7c46fb5f8dd143cbfb38d9bf822e48b",
+    "historical-audit/gateway-status-final.json": "fac868a2a04c113bcbeebbda6cc3ee4267d0e343c1b59e8075b050b7ec141a5d",
+    "historical-audit/final-lifecycle.json": "e1b6dcaa04b643c7bde8511d7ee42665d9ae21aa1c504a46ffd54b1c844a8f5b",
+    "historical-audit/strict-upload.json": "f5ab5259e2fdc1d92fb3f1c0eb6b2b27891ec0523ac900a4a1e5dbb9b6d2fd7e",
+    "historical-audit/attachments.mjs": "948d3f51b7653cad046b7ee51e3a0bc176d89ce0c13ea67f43943e9302ada7d8"
+  },
+  "auditStatus": "implementation_applied",
+  "evidenceNote": "Historical local audit references identify private, unpublished observations. They are not bundled, independently reproducible evidence, or a guarantee of availability for other accounts."
+}

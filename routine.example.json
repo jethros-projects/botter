@@ -1,0 +1,8 @@
+{
+  "name": "External event demo",
+  "prompt": "Read the incoming webhook JSON. Use your native send_message tool to send the user a concise acknowledgement including its probeId. Do not use other tools or change anything.",
+  "trigger": {
+    "type": "webhook"
+  },
+  "isEnabled": true
+}

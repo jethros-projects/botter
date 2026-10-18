@@ -1,0 +1,314 @@
+{
+  "page": "https://grok.com/",
+  "sourceUrl": "https://cdn.grok.com/_next/static/chunks/0ifsc7dwwvoj4.js",
+  "sha256": "643ea20bec93a09434c85b4eb766612bfd9b12ba09888339849e0238950902c1",
+  "methodCount": 123,
+  "methods": [
+    "addAgentSkill",
+    "approveCredentialRequest",
+    "attachUpload",
+    "authenticateMcpServer",
+    "callMcpAppTool",
+    "clearTrays",
+    "completeGithubConnect",
+    "completeMcpOAuth",
+    "connectChannel",
+    "countAgents",
+    "createAgent",
+    "createAgentAutomation",
+    "createAgentFromTemplate",
+    "createFirstBot",
+    "createGroup",
+    "deleteAgentAutomation",
+    "deleteAgents",
+    "deleteBotTemplate",
+    "denyCredentialRequest",
+    "discardDraft",
+    "disconnectChannel",
+    "disconnectListenerPlatform",
+    "dismissTray",
+    "dismissUserForm",
+    "dismissWidget",
+    "generateAgentAvatarImage",
+    "getAgentAutomations",
+    "getAgentAvatar",
+    "getAgentChannels",
+    "getAgentPlugins",
+    "getAgentThread",
+    "getAgentTranscript",
+    "getAgentTranscriptPage",
+    "getAgentTranscriptTail",
+    "getAgentTranscriptWindow",
+    "getAgentWorkflows",
+    "getAutomationWebhookCredential",
+    "getBotTemplateExportPolicy",
+    "getBotTemplateForSourceAgent",
+    "getBotTemplateVersion",
+    "getCloudAgentInfo",
+    "getCredentialProviderStatus",
+    "getCursorLinkStatus",
+    "getEffectiveMcpPlugins",
+    "getForeverBoxStatus",
+    "getHostSettings",
+    "getListenerConnectUrl",
+    "getListenerIntegrations",
+    "getMainAgent",
+    "getMcpCatalog",
+    "getMcpPluginLogo",
+    "getMcpState",
+    "getPublicBotTemplate",
+    "getPublicGrokBotMarketplaceListing",
+    "getSubagents",
+    "getTeachRecordingStatus",
+    "getTrays",
+    "getVoiceCall",
+    "handBackForeverBox",
+    "injectChromeCookies",
+    "installMcpEntry",
+    "interruptAgentRun",
+    "listAgentSecrets",
+    "listAgents",
+    "listAllAutomations",
+    "listBotTemplates",
+    "listBoxMcpServers",
+    "listCredentials",
+    "listMcpServerTools",
+    "listOwnerPlugins",
+    "listPublicGrokBotMarketplaceListings",
+    "listStripeLinkPaymentMethods",
+    "mintVoiceCallSecret",
+    "promptAcceptanceStatus",
+    "publishAgent",
+    "publishBotTemplate",
+    "putAgentSecret",
+    "reactToMessage",
+    "readAttachmentChunk",
+    "readAttachmentImage",
+    "readAttachmentText",
+    "readMcpAppResource",
+    "recordVoiceCall",
+    "refreshChannel",
+    "refreshMcp",
+    "removeAgentSkill",
+    "removeMcpAccount",
+    "removeMcpServer",
+    "renameMcpAccount",
+    "requestCredentialAutofill",
+    "resolveAutoReviewApproval",
+    "resolveConnectorGrant",
+    "resolveLocalToolPermission",
+    "resolveVirtualCardApproval",
+    "respondToWidget",
+    "runAgentAutomationNow",
+    "sendDraft",
+    "sendPrompt",
+    "setAgentAutomationEnabled",
+    "setAgentAvatarBytes",
+    "setAgentHiddenFromSidebar",
+    "setAgentNotificationsEnabled",
+    "setAgentNotifyOnUpdates",
+    "setAgentPlugins",
+    "setAgentUnread",
+    "setBotTemplateVisibility",
+    "setGroupMembers",
+    "setHostSettings",
+    "setMainAgent",
+    "setMcpCustomInstructions",
+    "setVoiceCallPresence",
+    "startTeachRecording",
+    "stopTeachRecording",
+    "submitSecret",
+    "submitUserForm",
+    "toggleMcpToolDisabled",
+    "uninstallMcpPlugin",
+    "updateAgent",
+    "updateAgentAutomation",
+    "updateMcpPluginInstall",
+    "uploadAttachment",
+    "voiceCallHarnessSession",
+    "voiceCallHarnessTool"
+  ],
+  "methodListName": "V1_COMMAND_ALLOWLIST",
+  "methodStrings": [
+    "bot.bindConversation",
+    "bot.command",
+    "bot.event",
+    "bot.presence",
+    "bot.roster",
+    "bot.status",
+    "bot.subscribe",
+    "bot.transcript.offbox",
+    "bot.unsubscribe",
+    "bot.usage",
+    "bot.vncDescriptor"
+  ],
+  "contexts": [
+    {
+      "term": "V1_COMMAND_ALLOWLIST",
+      "offset": 64127
+    },
+    {
+      "term": "async transcriptOffbox",
+      "offset": 51331
+    },
+    {
+      "term": "bot.command",
+      "offset": 62873
+    },
+    {
+      "term": "bot.presence",
+      "offset": 51071
+    },
+    {
+      "term": "bot.presence",
+      "offset": 51134
+    },
+    {
+      "term": "bot.subscribe",
+      "offset": 48358
+    },
+    {
+      "term": "bot.subscribe",
+      "offset": 48457
+    },
+    {
+      "term": "bot.subscribe",
+      "offset": 48824
+    },
+    {
+      "term": "bot.unsubscribe",
+      "offset": 48644
+    },
+    {
+      "term": "wss://",
+      "offset": 746
+    },
+    {
+      "term": "/ws",
+      "offset": 490
+    },
+    {
+      "term": "/ws",
+      "offset": 49666
+    },
+    {
+      "term": "new WebSocket",
+      "offset": 39184
+    },
+    {
+      "term": "hello",
+      "offset": 39764
+    },
+    {
+      "term": "hello",
+      "offset": 40051
+    },
+    {
+      "term": "hello",
+      "offset": 40277
+    },
+    {
+      "term": "hello",
+      "offset": 40644
+    },
+    {
+      "term": "capabilities",
+      "offset": 35591
+    },
+    {
+      "term": "capabilities",
+      "offset": 39653
+    },
+    {
+      "term": "capabilities",
+      "offset": 39867
+    },
+    {
+      "term": "capabilities",
+      "offset": 40362
+    }
+  ],
+  "schemaVersion": 1,
+  "clientMethods": [
+    "bot.subscribe",
+    "bot.unsubscribe",
+    "bot.roster",
+    "bot.status",
+    "bot.usage",
+    "bot.vncDescriptor",
+    "bot.bindConversation",
+    "bot.presence",
+    "bot.transcript.offbox",
+    "bot.command"
+  ],
+  "requestMethods": [
+    "bot.subscribe",
+    "bot.unsubscribe",
+    "bot.roster",
+    "bot.status",
+    "bot.usage",
+    "bot.vncDescriptor",
+    "bot.bindConversation",
+    "bot.presence",
+    "bot.transcript.offbox",
+    "bot.command"
+  ],
+  "requestEvidence": [
+    {
+      "method": "bot.subscribe",
+      "offset": 48349
+    },
+    {
+      "method": "bot.subscribe",
+      "offset": 48448
+    },
+    {
+      "method": "bot.unsubscribe",
+      "offset": 48635
+    },
+    {
+      "method": "bot.subscribe",
+      "offset": 48815
+    },
+    {
+      "method": "bot.roster",
+      "offset": 50636
+    },
+    {
+      "method": "bot.status",
+      "offset": 50715
+    },
+    {
+      "method": "bot.usage",
+      "offset": 50793
+    },
+    {
+      "method": "bot.vncDescriptor",
+      "offset": 50879
+    },
+    {
+      "method": "bot.bindConversation",
+      "offset": 50969
+    },
+    {
+      "method": "bot.presence",
+      "offset": 51119
+    },
+    {
+      "method": "bot.transcript.offbox",
+      "offset": 51394
+    },
+    {
+      "method": "bot.command",
+      "offset": 62864
+    }
+  ],
+  "provenance": {
+    "observedAt": "2026-10-17T23:03:19.291Z",
+    "page": "https://grok.com/",
+    "sourceUrl": "https://cdn.grok.com/_next/static/chunks/0ifsc7dwwvoj4.js",
+    "sha256": "643ea20bec93a09434c85b4eb766612bfd9b12ba09888339849e0238950902c1",
+    "transport": "WebSocket /ws/bot/; JSON-RPC 2.0 bot.command carries {agentId,name,args}.",
+    "limitation": "123 client-declared allowed command names; account availability is not inferred."
+  }
+}
