@@ -1,5 +1,5 @@
 <h1 align="center">botter</h1>
-<p align="center"><strong>Your bot. Your app. Your terminal.</strong></p>
+<p align="center"><strong>Your Grok Bot. Your app. Your terminal.</strong></p>
 <p align="center">A typed Node.js SDK and CLI for Grok Bot.</p>
 <p align="center">
   <a href="https://github.com/jethros-projects/botter/blob/main/LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-314f40?style=flat-square"></a>
@@ -16,7 +16,7 @@
 [![Botter command overview in a terminal](https://raw.githubusercontent.com/jethros-projects/botter/v0.8.1-next.0/docs/assets/botter-terminal.jpg)](https://github.com/jethros-projects/botter/blob/main/docs/commands.md)
 <p align="center"><sub>Actual <code>botter --help</code> output. No account data.</sub></p>
 
-Give your bot a task. Follow the conversation from a script. Build a desktop client, dashboard, or local assistant around the same typed API. One package provides the SDK and the CLI built on it.
+Give your Grok Bot a task. Follow the conversation from a script. Build a desktop client, dashboard, or local assistant around the same typed API. One package provides the SDK and the CLI built on it.
 
 ### Installation
 

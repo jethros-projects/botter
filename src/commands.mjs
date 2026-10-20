@@ -124,7 +124,7 @@ const examples = {
 const optionLabel = (name, kind) => `--${name}${kind === 'b' ? '' : kind === 'n' ? ' NUMBER' : ' VALUE'}${kind === 'r' ? ' (repeatable)' : ''}`;
 const synopsis = command => [command, usage[command], ...Object.entries(specs[command]).map(([name, kind]) => `[${optionLabel(name, kind)}]`)].filter(Boolean).join(' ');
 
-export const HELP = `Botter ${VERSION} — your bots, from the terminal
+export const HELP = `Botter ${VERSION} — your Grok Bot, from the terminal
 
 Usage: botter <command> [options]
 
