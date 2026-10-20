@@ -54,7 +54,7 @@ test('private CLI outputs reserve the destination before credentials and clean u
     await assert.rejects(main(args, { ...client, rpc: async () => {
       failedCalls++;
       throw new Error('connection dropped');
-    } }), /connection dropped/);
+    } }), /operation failed/);
     assert.equal(failedCalls, 1, 'uncertain request is not retried');
     assert.equal(fs.existsSync(filename), false, 'failed output removed');
   }

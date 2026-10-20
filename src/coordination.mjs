@@ -94,7 +94,7 @@ export async function createRoom(client, options = {}) {
     'durableIdentityEnabled', 'durableIdentityWritesEnabled'], options);
   const response = await client.rpc('CreateGrokBotRoom', {
     agentId, name, description: options.description ?? '', memberAgentIds: members,
-    humanMemberUserIds: [...humans],
+    ...(humans.length ? { humanMemberUserIds: [...humans] } : {}),
   }, rpcOptions(options, 45000));
   if (response.agent?.agentId !== agentId || !isRoom(response.agent)) {
     throw new Error(`Room creation returned an unexpected identity or kind. The request may have succeeded; inspect the roster before retrying. Requested room ID: ${agentId}`);

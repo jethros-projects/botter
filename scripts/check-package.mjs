@@ -16,13 +16,17 @@ const execute = (program, args, options = {}) => execFileSync(program, args, {
 try {
   const [packed] = JSON.parse(execute(npm, ['pack', '--ignore-scripts', '--json', '--pack-destination', temporary]));
   const files = new Set(packed.files.map(file => file.path));
-  for (const name of ['package.json', 'bin/botter.mjs', 'src/commands.mjs', 'schema/verified-support.json', 'README.md', 'LICENSE']) {
+  for (const name of ['package.json', 'bin/botter.mjs', 'src/commands.mjs', 'src/index.d.ts', 'src/advanced.d.ts', 'src/core.d.ts', 'docs/SDK.md', 'docs/agents.md', 'docs/live-verification.md', 'docs/releasing.md', 'docs/assets/README.md', 'docs/assets/botter-terminal.jpg', 'scripts/e2e-sdk.mjs', 'schema/verified-support.json', 'README.md', 'AGENTS.md', 'LICENSE', 'CONTRIBUTING.md', 'SECURITY.md']) {
     assert(files.has(name), `Missing package file: ${name}`);
   }
   for (const name of files) {
-    assert(/^(?:package\.json|README\.md|API-COVERAGE\.md|LICENSE|routine\.example\.json|(?:bin|src|schema)\/[^/]+\.(?:mjs|json))$/.test(name), `Unexpected package file: ${name}`);
-    const contents = readFileSync(path.join(root, name), 'utf8');
-    assert(!/\/(?:Users|home)\//.test(contents), `Private machine path in ${name}`);
+    assert(/^(?:package\.json|README\.md|API-COVERAGE\.md|AGENTS\.md|CONTRIBUTING\.md|SECURITY\.md|LICENSE|routine\.example\.json|docs\/[^/]+\.md|docs\/assets\/(?:README\.md|botter-terminal\.jpg)|scripts\/e2e-sdk\.mjs|(?:bin|src|schema)\/[^/]+\.(?:mjs|json|d\.ts))$/.test(name), `Unexpected package file: ${name}`);
+    const bytes = readFileSync(path.join(root, name));
+    if (name === 'docs/assets/botter-terminal.jpg') {
+      assert.equal(bytes.subarray(0, 3).toString('hex'), 'ffd8ff', 'Terminal image must be JPEG');
+    } else {
+      assert(!/\/(?:Users|home)\//.test(bytes.toString('utf8')), `Private machine path in ${name}`);
+    }
   }
   assert(packed.files.find(file => file.path === 'bin/botter.mjs').mode & 0o111, 'CLI must be executable');
   const prefix = path.join(temporary, 'install');

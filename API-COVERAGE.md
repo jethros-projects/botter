@@ -36,7 +36,7 @@ Public REST and the browser relay are unavailable in the executable CLI. Prior a
 
 Unverified task/todo and subagent controls, skill/secret/email writes, arbitrary resources, empty outlines, draft/computer actions, and direct box-only routine or upload paths are excluded. No flag bypasses the allowlist. Native gateway pagination or request variants that lack verified traversal remain restricted.
 
-Authentication commands are local infrastructure, separate from feature coverage. Existing credential storage and native macOS authentication compatibility are preserved. The JavaScript library includes lower-level internals; the executable support policy applies to the CLI surface.
+Authentication commands are local infrastructure, separate from feature coverage. Existing credential storage and native macOS authentication compatibility are preserved. The primary SDK and CLI share the executable support policy. Explicitly native transports and helpers remain available from `botter-cli/advanced` and the legacy `botter-cli/core` entrypoint; these raw interfaces do not advertise managed lifecycle or verified support.
 
 ## What verification means
 

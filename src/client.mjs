@@ -283,19 +283,21 @@ export class GrokBotClient {
     this.version = version ?? '0.71.2';
     this.baseUrl = ORIGIN;
   }
-  async authSession() {
-    const value = this.tokenProvider ? { accessToken: await this.tokenProvider() } : await this.authManager.getSession();
+  async authSession(options = {}) {
+    aborted(options.signal);
+    const value = this.tokenProvider ? { accessToken: await this.tokenProvider(options) } : await this.authManager.getSession(options);
+    aborted(options.signal);
     if (typeof value.accessToken !== 'string' || !value.accessToken.trim()) throw new Error('No access token available.');
     return value;
   }
-  async token() { return (await this.authSession()).accessToken; }
-  async accountFingerprint() {
-    const token = await this.token(); let subject;
+  async token(options) { return (await this.authSession(options)).accessToken; }
+  async accountFingerprint(options) {
+    const token = await this.token(options); let subject;
     try { subject = JSON.parse(Buffer.from(token.split('.')[1], 'base64url')).sub; } catch {}
     return createHash('sha256').update(subject || token).digest('hex');
   }
-  async headers(contentType) {
-    const session = await this.authSession();
+  async headers(contentType, options) {
+    const session = await this.authSession(options);
     return {
       'content-type': contentType, 'connect-protocol-version': '1',
       authorization: `Bearer ${session.accessToken}`, 'x-ghost-mode': 'true',
@@ -311,7 +313,7 @@ export class GrokBotClient {
     let secrets = [];
     try {
       aborted(operation.signal);
-      const headers = await abortable(this.headers('application/json'), operation.signal);
+      const headers = await abortable(this.headers('application/json', { signal: operation.signal }), operation.signal);
       secrets = [headers.authorization.slice(7)];
       const response = await abortable(this.fetch(url, {
         method: 'POST', redirect: 'error', signal: operation.signal,
@@ -345,7 +347,7 @@ export class GrokBotClient {
     let secrets = [];
     try {
       aborted(operation.signal);
-      const headers = await abortable(this.headers('application/connect+json'), operation.signal);
+      const headers = await abortable(this.headers('application/connect+json', { signal: operation.signal }), operation.signal);
       headers['connect-accept-encoding'] = 'gzip';
       secrets = [headers.authorization.slice(7)];
       const response = await abortable(this.fetch(url, {
@@ -385,7 +387,7 @@ export class GrokBotClient {
     let exchange, secrets = [];
     try {
       aborted(operation.signal);
-      const headers = await abortable(this.headers('application/connect+json'), operation.signal);
+      const headers = await abortable(this.headers('application/connect+json', { signal: operation.signal }), operation.signal);
       headers['connect-accept-encoding'] = 'gzip';
       headers['connect-timeout-ms'] = String(timeoutMs);
       secrets = [headers.authorization.slice(7)];
@@ -410,11 +412,11 @@ export class GrokBotClient {
     } catch (error) { throw safeError(error, secrets); }
     finally { operation.clear(); operation.controller.abort(); exchange?.close(); }
   }
-  async listBots() { return (await this.rpc('ListGrokBotAgents', {})).agents ?? []; }
-  async resolveBot(query) {
+  async listBots(options) { return (await this.rpc('ListGrokBotAgents', {}, options)).agents ?? []; }
+  async resolveBot(query, options) {
     if (query && typeof query === 'object' && typeof query.agentId === 'string' && query.agentId) return query;
     if (typeof query !== 'string' || !query.trim()) throw new Error('Specify a bot name or ID.');
-    const bots = await this.listBots();
+    const bots = await this.listBots(options);
     const matches = bots.filter(bot => [bot.id, bot.agentId, bot.legacyAgentId].includes(query)
       || bot.name?.toLowerCase() === query.toLowerCase());
     if (matches.length !== 1) throw new Error(matches.length ? 'Ambiguous bot name; use its agent UUID.' : `Bot not found: ${query}`);

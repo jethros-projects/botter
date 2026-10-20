@@ -177,7 +177,7 @@ export async function searchHistory(client, botQuery, query, { since, until, lim
 }
 
 export async function sendMessage(client, botQuery, text, { sessionId, messageId = randomUUID(), replyToId,
-  isFork = false, richText, attachments = [], taskId, signal } = {}) {
+  isFork = false, richText, attachments = [], taskId, signal, onDelivery } = {}) {
   if (typeof text !== 'string' || (!text.trim() && attachments.length === 0)) throw new Error('Message is empty.');
   if (!/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(messageId)) throw new Error('messageId must be a UUID.');
   if (replyToId !== undefined && (typeof replyToId !== 'string' || !replyToId)) throw new Error('replyToId must be a nonempty message ID.');
@@ -192,6 +192,9 @@ export async function sendMessage(client, botQuery, text, { sessionId, messageId
     ...(richText === undefined ? {} : { richText }), ...(taskId === undefined ? {} : { taskId }),
     attachmentPaths: attachments.map(a => a.path), attachmentNames: attachments.map(a => a.name),
   }, { signal });
+  // Capture observed acceptance before the optional status read can stall or be
+  // cancelled. The managed SDK uses this to retain an honest delivery receipt.
+  onDelivery?.({ bot: bot.name, agentId: bot.agentId, sessionId: session, messageId, delivery });
   // If status lookup fails, do not obscure the accepted send or repeat it automatically.
   let status, statusError;
   try { status = await client.rpc('GetGrokBotSendStatus', { agentId: bot.agentId, sessionId: session, messageId }, { signal }); }
@@ -411,6 +414,7 @@ export async function* watchBots(client, queries, { sessionId, fromStart = false
       if (signal?.aborted) return;
       if (error instanceof ApiError && (error.status >= 400 && error.status < 500 && ![408, 429].includes(error.status)
         || ['unauthenticated', 'permission_denied', 'invalid_argument'].includes(error.code))) throw error;
+      if (['AUTH_REQUIRED', 'AUTH_FAILED', 'INVALID_ARGUMENT', 'UNSUPPORTED_OPERATION', 'CLOSED', 'RESYNC_REQUIRED'].includes(error.code)) throw error;
       if (!reconnect) throw error;
       yield { type: 'reconnecting', message: error.message, delayMs: backoff };
     }

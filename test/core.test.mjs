@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import * as core from '../src/core.mjs';
-import * as legacy from '../src/index.mjs';
+import * as legacy from '../src/advanced.mjs';
 
 const exports = ['beginLogin', 'createAuthManager', 'createClient', 'downloadAttachment',
   'history', 'listRoutines', 'pollLogin', 'readTranscriptUpdates', 'sendMessage',

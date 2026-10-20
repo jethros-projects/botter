@@ -4,7 +4,9 @@ import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import * as api from './index.mjs';
+import * as api from './advanced.mjs';
+import { createClient, BotterClient } from './index.mjs';
+import { cliTransport } from './sdk.mjs';
 import * as features from './features.mjs';
 import { runApiCli } from './api-cli.mjs';
 import { runGatewayCli } from './gateway-cli.mjs';
@@ -52,6 +54,11 @@ function requestsHelp(args, spec) {
 }
 
 const print = value => console.log(JSON.stringify(value, null, 2));
+// Preserve the established CLI JSON contract while applications use botId/messages.
+const cliResult = value => {
+  const { botId, messages, message, output, ...rest } = value;
+  return { ...rest, ...(botId === undefined ? {} : { agentId: botId }) };
+};
 function count(args, expected) { if (args.length !== expected) throw new UsageError(`Expected ${expected} positional argument(s). Use --help.`); }
 function prompt(o) {
   if ((o.text === undefined) === (o.file === undefined)) throw new UsageError('Use exactly one of --text and --file.');
@@ -142,7 +149,8 @@ export async function main(argv = process.argv.slice(2), client) {
   if (!Object.hasOwn(specs, command) && !['api', 'gateway-api'].includes(command)) {
     throw new UsageError(`Unknown command: ${command}. Use botter help --all.`);
   }
-  client ??= api.createClient();
+  const sdk = client instanceof BotterClient ? client : createClient(client ? { transport: client } : undefined);
+  client = cliTransport(sdk);
   if (await runApiCli(argv, client)) return;
   if (await runGatewayCli(argv, client)) return;
   const { options: o, positionals: p } = parseOptions(rest, specs[command]);
@@ -161,49 +169,51 @@ export async function main(argv = process.argv.slice(2), client) {
         const value = await api.pollLogin(flow, { signal: controller.signal, timeoutMs: seconds * 1000 });
         // Verify the fresh session against the bot API before storing it.
         const probe = api.createClient({ authManager: { getSession: async () => value }, version: client.version });
-        const bots = await probe.listBots();
-        await manager.save(value);
-        return print({ ...await manager.status(), bots: bots.length });
+        const bots = await probe.listBots({ signal: controller.signal });
+        controller.signal.throwIfAborted();
+        await manager.save(value, { signal: controller.signal });
+        controller.signal.throwIfAborted();
+        return print({ ...await manager.status({ signal: controller.signal }), bots: bots.length });
       } finally { process.removeListener('SIGINT', interrupt); process.removeListener('SIGTERM', interrupt); }
     }
-    case 'auth-status': count(p, 0); return print(await (client.authManager ?? api.defaultAuthManager()).status());
+    case 'auth-status': count(p, 0); return print(await sdk.auth.status());
     case 'auth-refresh': {
-      count(p, 0); const manager = client.authManager ?? api.defaultAuthManager();
-      await manager.getSession({ forceRefresh: true }); return print(await manager.status());
+      count(p, 0); return print(await sdk.auth.refresh());
     }
     case 'logout': {
-      count(p, 0); await (client.authManager ?? api.defaultAuthManager()).logout();
+      count(p, 0); await sdk.auth.logout();
       return print({ authenticated: false, cleared: 'botter-local-session' });
     }
     case 'list': {
       count(p, 0);
-      const bots = await client.listBots();
+      const bots = (await sdk.listBots()).map(cliResult);
       return print(o.full ? bots : bots.map(b => ({ name: b.name, agentId: b.agentId, id: b.id, kind: b.kind, harness: b.harness })));
     }
-    case 'history': count(p, 1); return print(await api.history(client, p[0], { limit: o.limit, beforeSeq: o.before }));
+    case 'history': count(p, 1); return print(cliResult(await sdk.history({ botId: p[0], limit: o.limit, beforeSeq: o.before })));
     case 'thread': count(p, 2); return print(await api.readThread(client, p[0], p[1], { ...scanOptions(o),
       gatewayClient: o.gateway || o.connect ? await gateway(o.gateway, client, o.connect) : undefined }));
     case 'search': {
-      count(p, 1); const bots = p[0] === 'all' ? await client.listBots() : [await client.resolveBot(p[0])];
+      count(p, 1); const bots = p[0] === 'all' ? await sdk.listBots() : [{ botId: p[0] }];
       const result = [];
-      for (const bot of bots) result.push(await api.searchHistory(client, bot, o.query, { ...scanOptions(o), limit: o.limit, since: o.since, until: o.until }));
+      for (const bot of bots) result.push(cliResult(await sdk.search({ botId: bot.botId, query: o.query, ...scanOptions(o), limit: o.limit, since: o.since, until: o.until })));
       return print(p[0] === 'all' ? result : result[0]);
     }
     case 'watch': {
       count(p, 1);
       if (o.duration !== undefined && (o.duration < 1 || o.duration > 86400)) throw new UsageError('--duration must be 1–86400 seconds.');
       if (p[0] === 'all') throw new UsageError('watch currently supports one explicitly selected bot.');
-      const bots = [p[0]];
       const controller = new AbortController(), interrupt = () => controller.abort();
       process.once('SIGINT', interrupt); process.once('SIGTERM', interrupt);
       const timer = o.duration ? setTimeout(interrupt, o.duration * 1000) : null;
+      let subscription;
       try {
-        for await (const event of api.watchBots(client, bots, { signal: controller.signal })) {
-          console.log(JSON.stringify(event));
+        subscription = await sdk.watch({ botId: p[0] }, { signal: controller.signal });
+        for await (const event of subscription) {
+          console.log(JSON.stringify(cliResult(event)));
           if (['resyncRequired', 'cursorTooOld'].includes(event.type)) { process.exitCode = 1; return; }
         }
       } catch (error) { if (!controller.signal.aborted) throw error; }
-      finally { clearTimeout(timer); process.removeListener('SIGINT', interrupt); process.removeListener('SIGTERM', interrupt); }
+      finally { await subscription?.cancel(); clearTimeout(timer); process.removeListener('SIGINT', interrupt); process.removeListener('SIGTERM', interrupt); }
       return;
     }
     case 'updates': {
@@ -222,28 +232,25 @@ export async function main(argv = process.argv.slice(2), client) {
       if (!Array.isArray(attachments) || attachments.some(a => !a || typeof a.path !== 'string' || !a.path || typeof a.name !== 'string' || !a.name)) throw new UsageError('Attachments must be an array of {path,name} objects.');
       if (!text.trim() && !o.attach?.length && !attachments.length) throw new UsageError('Message is empty.');
       if (!/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(messageId)) throw new UsageError('--message-id must be a UUID.');
-      const bot = await client.resolveBot(p[0]);
-      console.error(JSON.stringify({ sending: true, bot: bot.name, messageId }));
-      for (const file of o.attach ?? []) { const result = await api.uploadAttachment(client, bot, file, { maxBytes: 5 * 1024 * 1024, allowedModes: ['SINGLE_PUT'] }); attachments.push({ path: result.path, name: result.fileName }); }
-      let result = await api.sendMessage(client, bot, text, { messageId, attachments });
+      console.error(JSON.stringify({ sending: true, bot: p[0], messageId }));
+      const result = cliResult(await sdk.send({ botId: p[0], text, messageId,
+        attachments: [...attachments.map(item => ({ remotePath: item.path, name: item.name })), ...(o.attach ?? [])],
+        wait: Boolean(o.wait), ...(o.wait ? { waitTimeoutMs: o.wait * 1000 } : {}) }));
       if (userSendFailed(result)) { print(result); process.exitCode = 1; return; }
-      if (o.wait) result = await api.waitForReply(client, result, { timeoutMs: o.wait * 1000 });
       return print(result);
     }
     case 'upload': {
       count(p, 2);
       const maxBytes = o['max-bytes'] ?? 5 * 1024 * 1024;
-      if (maxBytes > 5 * 1024 * 1024) throw new UsageError('Verified CLI uploads are limited to 5 MiB.');
-      return print(await api.uploadAttachment(client, p[0], p[1], { maxBytes, allowedModes: ['SINGLE_PUT'] }));
+      return print(cliResult(await sdk.upload({ botId: p[0], path: p[1], maxBytes })));
     }
     case 'download': {
       count(p, 2); if (!o.out) throw new UsageError('Supply --out.');
       const maxBytes = o['max-bytes'] ?? 5 * 1024 * 1024;
-      if (maxBytes > 5 * 1024 * 1024) throw new UsageError('Verified CLI downloads are limited to 5 MiB.');
-      return print(await api.downloadAttachment(client, p[0], p[1], o.out, { maxBytes, overwrite: o.overwrite, allowedReadOutcomes: ['STORE'] }));
+      return print(cliResult(await sdk.download({ botId: p[0], path: p[1], output: o.out, maxBytes, overwrite: o.overwrite })));
     }
-    case 'artifacts': count(p, 1); return print(await api.listArtifactReferences(client, p[0], { maxPages: o.pages }));
-    case 'artifact-refs': count(p, 1); return print(await api.listArtifactReferences(client, p[0], scanOptions(o)));
+    case 'artifacts': count(p, 1); return print(cliResult(await sdk.artifacts({ botId: p[0], maxPages: o.pages })));
+    case 'artifact-refs': count(p, 1); return print(cliResult(await sdk.artifacts({ botId: p[0], ...scanOptions(o) })));
     case 'handoff': {
       count(p, 2); const messageId = o['message-id'] ?? randomUUID();
       console.error(JSON.stringify({ sending: true, from: p[0], to: p[1], messageId }));
@@ -283,6 +290,7 @@ export async function main(argv = process.argv.slice(2), client) {
     case 'capabilities': {
       count(p, 0);
       const support = getVerifiedSupport();
+      const capabilities = sdk.capabilities();
       return print({
         serverRuntime: (await client.rpc('GetGrokBotRuntimeCapabilities', {})).capabilities,
         cli: { verifiedAt: support.verifiedAt,
@@ -290,7 +298,7 @@ export async function main(argv = process.argv.slice(2), client) {
           backend: support.backend.map(entry => entry.id),
           gateway: support.gateway.map(entry => entry.method),
           routines: { creation: 'webhook-via-bot', list: 'per-bot', directBoxMutations: false },
-          attachments: { maxBytes: 5 * 1024 * 1024, upload: ['SINGLE_PUT'], download: ['STORE'] } },
+          attachments: { maxBytes: capabilities.attachments.maxBytes, upload: capabilities.attachments.uploadModes, download: capabilities.attachments.downloadOutcomes } },
       });
     }
     case 'stop': count(p, 1); return print(await features.stopRun(client, p[0], { reason: o.reason }));

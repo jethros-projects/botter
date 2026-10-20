@@ -188,6 +188,7 @@ async function put(config, target, bytes) {
 }
 
 async function readInput(filePath, maxBytes, signal) {
+  ensureNotAborted(signal);
   if (typeof filePath !== 'string' || !filePath || filePath.includes('\0')) throw fail('INVALID_FILE', 'Specify a local file path.');
   const fileName = path.basename(filePath);
   if (!fileName || fileName.length > 255 || /[\\/\0\r\n]/.test(fileName)) throw fail('INVALID_FILE', 'Attachment file names must be 1–255 characters without separators.');
@@ -286,13 +287,13 @@ export async function uploadAttachment(client, botQuery, filePath, options = {})
   if (options.gatewayClient !== undefined && typeof options.gatewayClient?.rpcGateway !== 'function') {
     throw fail('INVALID_OPTION', 'gatewayClient must be an existing authorized gateway adapter.');
   }
-  const ctx = await context(client, botQuery, options);
   const { fileName, bytes } = await readInput(filePath, config.maxBytes, config.signal);
   const mimeType = options.mimeType ?? MIME_TYPES.get(path.extname(fileName).toLowerCase()) ?? 'application/octet-stream';
   if (typeof mimeType !== 'string' || !/^[\w!#$&^.+-]+\/[\w!#$&^.+-]+$/.test(mimeType)) {
     throw fail('INVALID_OPTION', 'mimeType must be a MIME type without parameters.');
   }
   const sha256 = createHash('sha256').update(bytes).digest('hex');
+  const ctx = await context(client, botQuery, options);
   let uploadToken;
   try {
     const begin = await client.rpc('BeginGrokBotAttachmentUpload', {
@@ -490,8 +491,10 @@ export async function downloadAttachment(client, botQuery, attachmentPath, desti
     } else throw fail('UNSUPPORTED_READ_OUTCOME', 'The server returned an unsupported attachment read outcome.');
     ensureNotAborted(config.signal);
     await handle.sync();
+    ensureNotAborted(config.signal);
     await handle.close();
     handle = undefined;
+    ensureNotAborted(config.signal);
     if (options.overwrite) await fs.rename(temporary, target);
     else await fs.link(temporary, target); // Atomic no-clobber even if a file appeared during the download.
     return { ...ctx, remotePath: normalizedPath, destination: target, ...metadata, sha256: digest.digest('hex') };

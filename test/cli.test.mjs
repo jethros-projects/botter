@@ -83,7 +83,7 @@ test('history and scan CLI preserve tested pagination controls', async () => {
 test('room CLI permits only nonempty owned-bot membership', async () => {
   const c = mock((_method, body) => ({ agent: { agentId: body.agentId, kind: 'ROOM' } }));
   await run(['room-create', 'Bots', '--id', 'room', '--members', 'Alpha'], c);
-  assert.deepEqual(c.calls.at(-1).body.humanMemberUserIds, []);
+  assert.equal(c.calls.at(-1).body.humanMemberUserIds, undefined);
   assert.deepEqual(c.calls.at(-1).body.memberAgentIds, ['alpha']);
   c.resolveBot = async () => ({ agentId: 'room', kind: 'ROOM' });
   const before = c.calls.length;

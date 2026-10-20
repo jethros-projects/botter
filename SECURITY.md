@@ -21,3 +21,13 @@ Command output may contain private conversations, file references, or third-part
 Botter uses unofficial internal APIs. The service enforces account permissions, and availability may change. The support manifest limits callable operations and request shapes; it does not certify every connected tool or prevent side effects requested through messages or tool calls. Review write commands and tool arguments before running them.
 
 Normal development checks are offline. Live writes require a deliberately selected account and disposable resources; they are not part of CI.
+
+## Publication privacy
+
+Maintainer release checks inspect Git identities, committed source, package
+metadata, and archive contents and headers before publishing. Follow the
+[release guide](docs/releasing.md) and use the guarded directory publisher;
+local tarball publication can expose machine paths in npm metadata. Review
+public GitHub and npm account information separately. These checks reduce
+accidental exposure; they cannot remove previously shared copies or guarantee
+that arbitrary user content contains no personal information.

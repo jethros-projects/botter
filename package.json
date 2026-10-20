@@ -1,14 +1,25 @@
 {
-  "name": "botter-cli",
-  "version": "0.7.0",
+  "name": "@jethros-projects/botter",
+  "version": "0.8.1-next.0",
   "type": "module",
-  "description": "A focused, scriptable CLI for Grok Bot",
+  "description": "A typed SDK and focused CLI for Grok Bot",
   "engines": {
     "node": ">=22"
   },
   "exports": {
-    ".": "./src/index.mjs",
-    "./core": "./src/core.mjs"
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.mjs"
+    },
+    "./advanced": {
+      "types": "./src/advanced.d.ts",
+      "import": "./src/advanced.mjs"
+    },
+    "./core": {
+      "types": "./src/core.d.ts",
+      "import": "./src/core.mjs"
+    },
+    "./package.json": "./package.json"
   },
   "bin": {
     "botter": "./bin/botter.mjs"
@@ -16,23 +27,52 @@
   "scripts": {
     "test": "node --test test/*.test.mjs",
     "coverage:api": "node scripts/verify-api-coverage.mjs",
-    "check": "npm test && npm run coverage:api && node scripts/check-package.mjs",
-    "prepublishOnly": "npm run check"
+    "check": "npm test && npm run coverage:api && npm run typecheck && node scripts/check-package.mjs",
+    "typecheck": "node scripts/check-types.mjs",
+    "test:live": "node scripts/e2e-sdk.mjs",
+    "release:check": "node scripts/release.mjs check",
+    "release:publish": "node scripts/release.mjs publish"
   },
   "license": "MIT",
   "files": [
     "bin/",
     "src/",
     "schema/",
+    "docs/",
+    "scripts/e2e-sdk.mjs",
     "README.md",
     "API-COVERAGE.md",
+    "AGENTS.md",
     "LICENSE",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
     "routine.example.json"
   ],
   "keywords": [
     "botter",
     "grok-bot",
+    "sdk",
     "cli",
+    "typescript",
+    "agents",
     "automation"
-  ]
+  ],
+  "main": "./src/index.mjs",
+  "types": "./src/index.d.ts",
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "@types/node": "^22.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jethros-projects/botter.git"
+  },
+  "homepage": "https://github.com/jethros-projects/botter#readme",
+  "bugs": {
+    "url": "https://github.com/jethros-projects/botter/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "next"
+  }
 }

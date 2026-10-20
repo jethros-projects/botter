@@ -1,106 +1,112 @@
-# botter
+<h1 align="center">botter</h1>
+<p align="center"><strong>Your bot. Your app. Your terminal.</strong></p>
+<p align="center">A typed Node.js SDK and CLI for Grok Bot.</p>
+<p align="center">
+  <a href="https://github.com/jethros-projects/botter/blob/main/LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-314f40?style=flat-square"></a>
+  <a href="https://nodejs.org"><img alt="Node.js 22 or newer" src="https://img.shields.io/badge/Node.js-22%2B-314f40?style=flat-square"></a>
+  <a href="https://github.com/jethros-projects/botter/blob/main/docs/SDK.md"><img alt="Typed SDK" src="https://img.shields.io/badge/SDK-typed-314f40?style=flat-square"></a>
+</p>
+<p align="center">
+  <a href="https://github.com/jethros-projects/botter/blob/main/docs/SDK.md">SDK</a> ·
+  <a href="https://github.com/jethros-projects/botter/blob/main/docs/commands.md">CLI reference</a> ·
+  <a href="https://github.com/jethros-projects/botter/blob/main/docs/agents.md">For agents</a> ·
+  <a href="https://github.com/jethros-projects/botter/blob/main/CONTRIBUTING.md">Contributing</a>
+</p>
 
-A small, scriptable CLI for Grok Bot: read conversations, send messages, manage bots, and work with files and routines.
+[![Botter command overview in a terminal](https://raw.githubusercontent.com/jethros-projects/botter/v0.8.1-next.0/docs/assets/botter-terminal.jpg)](https://github.com/jethros-projects/botter/blob/main/docs/commands.md)
+<p align="center"><sub>Actual <code>botter --help</code> output. No account data.</sub></p>
 
-Botter is an unofficial client for Cursor's native Grok Bot APIs. It uses internal interfaces whose availability and permissions are controlled by the service. An account with access to Grok Bot is required.
+Give your bot a task. Follow the conversation from a script. Build a desktop client, dashboard, or local assistant around the same typed API. One package provides the SDK and the CLI built on it.
 
-## Install from source
+### Installation
 
-Requires Node.js 22 or newer. From this checkout:
+Requires **Node.js 22+** and an account with **Grok Bot access**. Install the preview from npm:
 
 ```sh
-npm ci
-npm link
-botter --version
+npm install --global @jethros-projects/botter@next --ignore-scripts
+
 botter --help
 ```
 
-The package is named `botter-cli`. These instructions install the local source; they do not assume a published npm release. To run without linking, use `node bin/botter.mjs` in place of `botter`.
+For an application, run `npm install @jethros-projects/botter@next --ignore-scripts`. The package is `@jethros-projects/botter`; the command is `botter`. TypeScript declarations are included. No build step.
 
-## Start here
+### Start a conversation
 
 ```sh
 botter login
 botter auth-status
 botter list
-botter history BOT --limit 20
-botter search BOT --query 'release notes'
+botter history BOT --limit 10
+botter send BOT --text "Review the release checklist and report blockers." --wait 30
 ```
 
-Replace `BOT` with the bot identifier returned by `list`. Commands produce JSON; `watch` and API streams produce newline-delimited JSON, one event per line. `--version` (or `-v`) prints the version. Exit status is 0 for success, 1 for an operation failure or required transcript resync, and 2 for invalid usage. Errors are JSON on stderr.
+Replace `BOT` with a temporal bot's `agentId` from `list`; the SDK calls it `botId`. Sign-in opens the official Cursor login flow used by the native service. An existing login can be checked with `botter auth-status`.
 
-Sending a message changes the conversation and can start work on the bot:
+### Build your own client
+
+```ts
+import { createClient } from '@jethros-projects/botter';
+
+const bot = createClient();
+
+try {
+  const botId = 'BOT_ID'; // A temporal bot's ID from await bot.listBots().
+  const sent = await bot.send({
+    botId,
+    text: 'Review the release checklist and report blockers.',
+  });
+  const page = await bot.history({ botId, limit: 20 });
+
+  console.log(sent.messageId, page.messages);
+} finally {
+  await bot.close();
+}
+```
+
+The root SDK covers bot discovery, messages, history, search, watching, uploads, downloads, and artifacts. It provides typed inputs, cancellation, bounded subscriptions, and structured errors. Keep it in a trusted Node host or backend for desktop, browser, and mobile clients. See the [SDK guide](https://github.com/jethros-projects/botter/blob/main/docs/SDK.md) for streaming and credential ownership.
+
+### Messages, files, and automation
 
 ```sh
-botter send BOT --text 'Summarize the release notes' --wait 30
+botter send BOT --text "Suggest three next steps from these notes." --attach ./notes.txt --wait 30
+botter watch BOT --duration 30
+botter search BOT --query "next steps" --pages 2 --limit 10
+botter artifacts BOT --pages 2
 ```
 
-`watch` streams until Ctrl-C; `--duration` limits it to 1–86400 seconds. If `watch` emits `resyncRequired` or `cursorTooOld`, or `updates` returns `resyncRequired: true`, it exits with status 1. Reload `history` and start a fresh watch or update cursor; the old checkpoint cannot safely continue.
+Supply your own `./notes.txt` before running the attachment example. Transfers support files up to **5 MiB**, using single-PUT uploads and verified store downloads. Sends return acceptance by default; a correlated reply can be a progress update. Writes are never automatically retried.
 
-`--wait` waits for a reply correlated to this message. That reply may be a progress update; it does not mean all background work has finished. Writes are never automatically retried.
+Bot administration, bot rooms, handoffs, routines, connected tools, and native audio have specialist commands or advanced APIs. Start with `botter help --all`, `botter api --help`, or `botter gateway-api --help`. The [support manifest](https://github.com/jethros-projects/botter/blob/main/schema/verified-support.json) defines the executable scope; reference schemas contain additional interfaces that are unavailable through managed operations.
 
-## Find a command
+### For agents
 
-```sh
-botter --help
-botter help --all
-botter help send
-botter history --help
-botter api --help
-botter gateway-api --help
-```
+Use `botter --help` to discover commands and `botter help COMMAND` for exact arguments. Commands return JSON; watches and API streams return NDJSON. Discover target IDs, bound watches with `--duration`, and keep the message ID when reconciling an uncertain send. The [agent runbook](https://github.com/jethros-projects/botter/blob/main/docs/agents.md) covers file handling, exit codes, and recovery. Repository agents should start with [AGENTS.md](https://github.com/jethros-projects/botter/blob/main/AGENTS.md).
 
-The default help covers everyday tasks. `help --all` shows the complete command and flag reference. Every command accepts `--help` without signing in or making a request.
+### Access and status
 
-| Task | Commands |
+Botter is an **independent, unofficial project** using native Grok Bot interfaces. It is not affiliated with or endorsed by the service providers. Access depends on your account and the upstream service; signing in does not establish that every operation is available.
+
+The `next` channel is a public preview. A prior packed 0.8.1 build passed real-account SDK and CLI checks for messaging, history, search, watching, and file transfers. That evidence applies to the tested build and request forms; it does not certify every advanced operation or the current preview archive. See [API coverage](https://github.com/jethros-projects/botter/blob/main/API-COVERAGE.md), [live verification](https://github.com/jethros-projects/botter/blob/main/docs/live-verification.md), and the [release guide](https://github.com/jethros-projects/botter/blob/main/docs/releasing.md).
+
+### Documentation
+
+| Guide | Start here for |
 | --- | --- |
-| Sign in | `login`, `auth-status`, `auth-refresh`, `logout` |
-| Read conversations | `list`, `history`, `search`, `thread`, `watch`, `updates` |
-| Send and follow work | `send`, `send-status`, `status`, `stop`, `handoff` |
-| Work with files | `upload`, `download`, `artifacts`, `artifact-refs` |
-| Manage bots and rooms | `bot-create`, `bot-update`, `bot-delete`, `bot-main`, `rooms`, `room-create`, `room-members` |
-| Manage routines | `routines`, `routine-create`, `routine-enable`, `routine-disable`, `routine-delete` |
-| Inspect integrations | `tools`, `capabilities`, `gateway-status` |
+| [SDK](https://github.com/jethros-projects/botter/blob/main/docs/SDK.md) | Typed APIs, subscriptions, authentication, and errors |
+| [CLI reference](https://github.com/jethros-projects/botter/blob/main/docs/commands.md) | Commands, flags, and input formats |
+| [For agents](https://github.com/jethros-projects/botter/blob/main/docs/agents.md) | Bounded workflows and machine output |
+| [API coverage](https://github.com/jethros-projects/botter/blob/main/API-COVERAGE.md) | Supported operations and service restrictions |
+| [Architecture](https://github.com/jethros-projects/botter/blob/main/docs/architecture.md) | Module boundaries and implementation map |
 
-For example, `upload` writes a file to a bot, while `download` writes a local file and requires an explicit destination:
+### Contributing
 
 ```sh
-botter upload BOT ./notes.txt
-botter download BOT /remote/path/notes.txt --out ./downloaded-notes.txt
-```
-
-File transfers support verified storage paths up to 5 MiB. Uploads use a single PUT; downloads refuse to overwrite an existing file unless you pass `--overwrite`.
-
-## Authentication
-
-`botter login` uses the provider's browser sign-in flow. On macOS, botter stores its session in Keychain. Other platforms use a private file at `~/.config/grok-bot-bridge/auth.json`.
-
-Set `BOTTER_AUTH_FILE` to choose a credential file. The older `GROK_BRIDGE_AUTH_FILE` variable remains supported; `BOTTER_AUTH_FILE` takes precedence when both are set. Credential files must be owned by you and private to your user. Existing Keychain storage and the native macOS login adapter retain their original identifiers for compatibility.
-
-`auth-status` reports session metadata without printing credentials. `logout` removes botter's stored session. Keep credential files, webhook keys, account output, and downloaded private content out of source control.
-
-## API access
-
-The native backend and computer gateway have a larger reference schema than the executable CLI supports. Inspect them offline:
-
-```sh
-botter api list
-botter api schema GrokBotService.ListGrokBotAgents
-botter gateway-api list
-```
-
-Only operations enabled by the [support manifest](schema/verified-support.json) can execute. Unsupported operations fail before reading request files, credentials, or the network. A method appearing in a reference schema does not make it supported.
-
-See [API coverage](API-COVERAGE.md) for the supported scope and its restrictions.
-
-## Development
-
-```sh
-npm ci
+npm ci --ignore-scripts
 npm run check
-npm pack --dry-run
 ```
 
-The checks run offline regression tests, validate the support manifest, and install the actual package tarball in an isolated temporary directory. They do not sign in, verify current account permissions, or mutate live resources.
+Verification runs offline: regressions, support checks, strict types, and a consumer of the packed npm package. Read [Contributing](https://github.com/jethros-projects/botter/blob/main/CONTRIBUTING.md) before opening a pull request and [Security](https://github.com/jethros-projects/botter/blob/main/SECURITY.md) for private reports.
 
-See [Contributing](CONTRIBUTING.md) and [Security](SECURITY.md). Licensed under [MIT](LICENSE).
+---
+
+[MIT](https://github.com/jethros-projects/botter/blob/main/LICENSE) · Built by [Jethro](https://github.com/jethros-projects) and contributors.
