@@ -1,10 +1,10 @@
 {
   "name": "@jethros-projects/botter",
-  "version": "0.8.1-next.0",
+  "version": "0.8.1-next.1",
   "type": "module",
   "description": "A typed SDK and focused CLI for Grok Bot",
   "engines": {
-    "node": ">=22"
+    "node": "^22.23.4 || ^24.22.1 || ^26.12.1"
   },
   "exports": {
     ".": {

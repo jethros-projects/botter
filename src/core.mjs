@@ -1,3 +1,4 @@
+import './runtime.mjs';
 // Shared runtime for clients and integrations. CLI parsing and process startup
 // stay in command adapters. Retained for integrations written before 0.8;
 // new applications should use the primary typed SDK instead.

@@ -16,7 +16,7 @@ const execute = (program, args, options = {}) => execFileSync(program, args, {
 try {
   const [packed] = JSON.parse(execute(npm, ['pack', '--ignore-scripts', '--json', '--pack-destination', temporary]));
   const files = new Set(packed.files.map(file => file.path));
-  for (const name of ['package.json', 'bin/botter.mjs', 'src/commands.mjs', 'src/index.d.ts', 'src/advanced.d.ts', 'src/core.d.ts', 'docs/SDK.md', 'docs/agents.md', 'docs/live-verification.md', 'docs/releasing.md', 'docs/assets/README.md', 'docs/assets/botter-terminal.jpg', 'scripts/e2e-sdk.mjs', 'schema/verified-support.json', 'README.md', 'AGENTS.md', 'LICENSE', 'CONTRIBUTING.md', 'SECURITY.md']) {
+  for (const name of ['package.json', 'bin/botter.mjs', 'src/commands.mjs', 'src/runtime.mjs', 'src/index.d.ts', 'src/advanced.d.ts', 'src/core.d.ts', 'docs/SDK.md', 'docs/security-2026-10.md', 'docs/agents.md', 'docs/live-verification.md', 'docs/releasing.md', 'docs/assets/README.md', 'docs/assets/botter-terminal.jpg', 'scripts/e2e-sdk.mjs', 'schema/verified-support.json', 'README.md', 'AGENTS.md', 'LICENSE', 'CONTRIBUTING.md', 'SECURITY.md']) {
     assert(files.has(name), `Missing package file: ${name}`);
   }
   for (const name of files) {

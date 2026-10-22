@@ -4,7 +4,9 @@ Keep Botter easy to learn and easy to maintain. Prefer small modules, typed inpu
 
 ## Local setup
 
-Use Node.js 22 or newer:
+Use Node.js **22.23.4+, 24.22.1+, or 26.12.1+** within those release lines.
+The repository default is 24.22.1 (`.node-version`); unsupported runtimes fail
+before SDK or CLI startup. See [the security update](docs/security-2026-10.md).
 
 ```sh
 npm ci --ignore-scripts
@@ -13,7 +15,7 @@ npm pack --dry-run
 node bin/botter.mjs --help
 ```
 
-There is no build step. `npm run check` runs the regression suite, offline API coverage check, strict TypeScript consumers against the packed package, and an isolated tarball installation smoke check. No credentials or live account access should be needed. CI checks Node.js 22 and 24.
+There is no build step. `npm run check` runs the regression suite, offline API coverage check, strict TypeScript consumers against the packed package, and an isolated tarball installation smoke check. No credentials or live account access should be needed. CI checks Node.js 22.23.4, 24.22.1, and 26.12.1 on Linux and macOS.
 
 ## Structure
 

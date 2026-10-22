@@ -8,7 +8,10 @@ repository. For an agent using Botter, read [the agent runbook](docs/agents.md).
 - Read [the SDK guide](docs/SDK.md) for the public contract and examples.
 - Read [the architecture map](docs/architecture.md) before changing module boundaries.
 - Read [Contributing](CONTRIBUTING.md) for development and verification.
-- Use Node.js 22 or newer; CI also checks Node.js 24.
+- Use a security-patched Node.js release: 22.23.4+, 24.22.1+, or 26.12.1+
+  within those release lines. CI checks all three minimum versions.
+- Keep the dependency-free runtime gate first in every public SDK entrypoint
+  and before CLI startup. See [the October security update](docs/security-2026-10.md).
 
 ```sh
 npm ci --ignore-scripts

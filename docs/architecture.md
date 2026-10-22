@@ -6,6 +6,7 @@ run directly, with declarations for TypeScript. There is no build step.
 
 | Location | Responsibility |
 | --- | --- |
+| `src/runtime.mjs` | Internal security baseline checked before public SDK and CLI startup |
 | `src/index.mjs`, `src/index.d.ts` | Canonical SDK exports and typed application contract |
 | `src/sdk.mjs` | Input validation, support policy, orchestration, ownership, and cancellation |
 | `src/sdk-errors.mjs` | Stable public error codes and safe messages |

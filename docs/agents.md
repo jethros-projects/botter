@@ -1,5 +1,9 @@
 # Using Botter from an agent
 
+Use Node.js 22.23.4+, 24.22.1+, or 26.12.1+ within those release lines.
+`UNSUPPORTED_NODE_VERSION` means the Node.js runtime must be upgraded before
+retrying; reinstalling the package cannot fix the runtime.
+
 This is an operating runbook. For application types and examples, use the [SDK guide](SDK.md); for repository changes, use [AGENTS.md](../AGENTS.md).
 
 ## Authenticate and discover

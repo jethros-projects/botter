@@ -3,7 +3,7 @@
 Botter ships one package, `@jethros-projects/botter`, containing the typed SDK
 and the `botter` executable. The source repository is
 [jethros-projects/botter](https://github.com/jethros-projects/botter).
-Preview versions use a suffix such as `0.8.1-next.0` and the explicit npm tag
+Preview versions use a suffix such as `0.8.1-next.1` and the explicit npm tag
 `next`. Preview status describes the release channel; it does not establish
 complete live verification or official support from the service provider.
 
@@ -14,8 +14,8 @@ complete live verification or official support from the service provider.
 2. Set the version in `package.json` and both root fields in
    `package-lock.json`. Review package links, README examples, the terminal
    image, licenses, and the documented API limitations.
-3. Run `npm ci --ignore-scripts` and `npm run check`. CI checks Node.js 22 and
-   24 on Linux and macOS. Its regression tests, strict packed SDK consumers,
+3. Run `npm ci --ignore-scripts` and `npm run check`. CI checks Node.js 22.23.4,
+   24.22.1, and 26.12.1 on Linux and macOS. Its regression tests, strict packed SDK consumers,
    README examples, and isolated package install use offline fixtures.
 4. Commit the exact reviewed source with the public identity below. Run CI on
    that commit. Use npm **11.11.1** for the maintainer release commands.
@@ -96,7 +96,7 @@ Do not claim hosted CI provenance for a local terminal publication.
 npm can scan a new upload before making it installable. After a successful
 publish, check registry metadata before retrying an apparent 404: published
 name/version pairs cannot be reused. Download the actual published archive,
-compare its hash with the candidate, and test fresh Node 22 and 24 installs.
+compare its hash with the candidate, and test fresh installs on Node 22.23.4, 24.22.1, and 26.12.1.
 Review the complete public metadata, including npm-added account fields, and
 inspect README links and the terminal image on both GitHub and npm.
 

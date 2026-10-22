@@ -1,7 +1,7 @@
 # CLI reference
 
 The package is `@jethros-projects/botter`; the executable is `botter`.
-Use Node.js 22 or newer. Commands return JSON on stdout; watches and API streams
+Use Node.js 22.23.4+, 24.22.1+, or 26.12.1+ within those release lines. Commands return JSON on stdout; watches and API streams
 return NDJSON. Diagnostics and JSON errors go to stderr.
 
 ## Discover commands

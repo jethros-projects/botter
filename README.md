@@ -3,7 +3,7 @@
 <p align="center">A typed Node.js SDK and CLI for Grok Bot.</p>
 <p align="center">
   <a href="https://github.com/jethros-projects/botter/blob/main/LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-314f40?style=flat-square"></a>
-  <a href="https://nodejs.org"><img alt="Node.js 22 or newer" src="https://img.shields.io/badge/Node.js-22%2B-314f40?style=flat-square"></a>
+  <a href="https://nodejs.org"><img alt="Security-patched Node.js 22, 24, or 26" src="https://img.shields.io/badge/Node.js-22%20%7C%2024%20%7C%2026-314f40?style=flat-square"></a>
   <a href="https://github.com/jethros-projects/botter/blob/main/docs/SDK.md"><img alt="Typed SDK" src="https://img.shields.io/badge/SDK-typed-314f40?style=flat-square"></a>
 </p>
 <p align="center">
@@ -20,7 +20,7 @@ Give your Grok Bot a task. Follow the conversation from a script. Build a deskto
 
 ### Installation
 
-Requires **Node.js 22+** and an account with **Grok Bot access**. Install the preview from npm:
+Requires **Node.js 22.23.4+, 24.22.1+, or 26.12.1+** within those release lines and an account with **Grok Bot access**. Upgrade Node.js itself for the [October 2026 security fixes](https://github.com/jethros-projects/botter/blob/main/docs/security-2026-10.md), then install the preview from npm:
 
 ```sh
 npm install --global @jethros-projects/botter@next --ignore-scripts

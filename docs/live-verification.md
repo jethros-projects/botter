@@ -2,7 +2,7 @@
 
 The normal test suite is offline. This optional check packs the current source, installs that exact tarball privately, and tests the installed `createClient` API and `botter` executable against your Grok Bot account.
 
-Use Node.js 22+ and an existing working login. Review [the live verification scope](../CONTRIBUTING.md#opt-in-live-verification) first.
+Use Node.js 22.23.4+, 24.22.1+, or 26.12.1+ within those release lines and an existing working login. Review [the live verification scope](../CONTRIBUTING.md#opt-in-live-verification) first.
 
 ## Recorded baseline
 

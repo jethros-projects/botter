@@ -2,6 +2,16 @@
 
 Botter handles account credentials and can send messages, invoke connected tools, manage resources, and transfer private files. Only run it with accounts and resources you are authorized to use.
 
+## Required runtime
+
+Use Node.js **22.23.4+, 24.22.1+, or 26.12.1+** within those release lines.
+The [October 2026 update](docs/security-2026-10.md) explains the upstream
+vulnerabilities and exposure limits. Botter rejects unsupported runtimes with
+`UNSUPPORTED_NODE_VERSION` before SDK or CLI startup. Updating the npm package
+does not patch Node.js: update the runtime separately, including any embedded
+or deployed copy. Unknown major versions and prereleases require review before
+they are supported.
+
 ## Reporting a vulnerability
 
 Use the repository's private vulnerability reporting feature when available. Otherwise, contact the maintainer privately through their repository profile before sharing details. Do not post tokens, account data, exploit details involving another user's resources, or unsanitized command output in a public issue.

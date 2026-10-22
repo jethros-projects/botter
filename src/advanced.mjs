@@ -1,3 +1,4 @@
+import './runtime.mjs';
 // Provider-specific and legacy APIs. Raw transports deliberately expose native
 // protocol calls; only the primary SDK enforces supported-operation contracts.
 export * from './client.mjs';

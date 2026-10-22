@@ -2,7 +2,7 @@
 
 `@jethros-projects/botter` contains the SDK and the `botter` executable. The SDK is the application boundary: it owns validation, supported-operation checks, file transfer policy, normalized errors, cancellation, and subscriptions. The CLI calls this same API.
 
-Use **Node.js 22+ and ESM**. TypeScript declarations ship with the package; no transpilation is needed at runtime. TypeScript Node projects should include `@types/node` for the optional native HTTP/2 transport injection type.
+Use **Node.js 22.23.4+, 24.22.1+, or 26.12.1+ within those release lines, and ESM**. The SDK rejects unsupported Node.js versions at import with `UNSUPPORTED_NODE_VERSION`, before credentials or network access. Upgrade Node.js itself; see [the security update](security-2026-10.md). TypeScript declarations ship with the package; no transpilation is needed at runtime. TypeScript Node projects should include `@types/node` for the optional native HTTP/2 transport injection type.
 
 For tool-oriented discovery, bounded CLI workflows, and send reconciliation, see the [agent runbook](agents.md).
 

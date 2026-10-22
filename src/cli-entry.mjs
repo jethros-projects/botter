@@ -1,3 +1,4 @@
+import './runtime.mjs';
 import { main } from './cli.mjs';
 import { UsageError } from './errors.mjs';
 import { ApiSchemaError } from './schema.mjs';
